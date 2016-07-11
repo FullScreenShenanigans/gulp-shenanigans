@@ -1,6 +1,6 @@
 {
   "name": "gulp-shenanigans",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Unified Gulp tasks for FullScreenShenanigans projects.",
   "main": "lib/gulp-shenanigans.js",
   "repository": {
@@ -35,6 +35,6 @@
     "sinon": "^1.17.4",
     "tslint": "^3.13.0",
     "typescript": "^1.8.10",
-    "typespace": "^0.1.2"
+    "typespace": "^0.1.3"
   }
 }
