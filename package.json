@@ -1,0 +1,40 @@
+{
+  "name": "gulp-shenanigans",
+  "version": "0.1.0",
+  "description": "Unified Gulp tasks for FullScreenShenanigans projects.",
+  "main": "lib/gulp-shenanigans.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fullscreenshenanigans/gulp-shenanigans.git"
+  },
+  "keywords": [
+    "fullscreenshenanigans"
+  ],
+  "author": {
+    "name": "Josh Goldberg",
+    "email": "joshuakgoldberg@outlook.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fullscreenshenanigans/gulp-shenanigans/issues"
+  },
+  "homepage": "https://github.com/fullscreenshenanigans/gulp-shenanigans#readme",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-mocha": "^2.2.0",
+    "gulp-mocha-phantomjs": "^0.11.0",
+    "gulp-tslint": "^6.0.1",
+    "gulp-typescript": "^2.13.6",
+    "gulp-typespace": "^0.1.2",
+    "merge2": "^1.0.2",
+    "mocha": "^2.5.3",
+    "requirejs": "^2.2.0",
+    "run-sequence": "^1.2.2",
+    "sinon": "^1.17.4",
+    "tslint": "^3.13.0",
+    "typescript": "^1.8.10",
+    "typespace": "^0.1.2"
+  }
+}
