@@ -1,6 +1,6 @@
 {
   "name": "gulp-shenanigans",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Unified Gulp tasks for FullScreenShenanigans projects.",
   "main": "lib/gulp-shenanigans.js",
   "repository": {
@@ -22,7 +22,6 @@
   "dependencies": {
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
-    "gulp-eslint": "^3.0.1",
     "gulp-mocha": "^2.2.0",
     "gulp-mocha-phantomjs": "^0.11.0",
     "gulp-tslint": "^6.0.1",
