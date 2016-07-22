@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "target": "es3"
+    },
+    "files": [
+        "src/main.ts",
+        "src/tasks/clean.ts",
+        "src/tasks/default.ts",
+        "src/tasks/dist.ts",
+        "src/tasks/test.ts",
+        "src/tasks/tslint.ts",
+        "src/tasks/tsc.ts",
+        "src/tasks/typespace.ts",
+        "src/tasks/watch.ts"
+    ]
+}

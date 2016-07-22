@@ -2,7 +2,3 @@
 node_modules/
 logs
 npm-debug.log
-
-# Built files
-lib/**
-src/**/*.js
