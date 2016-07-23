@@ -12,10 +12,14 @@ export function taskTypespace(settings: IGulpSettings) {
         outFile: `${settings.packageName}.ts`,
         namespace: settings.packageName,
         pathPrefix: Constants.folders.src,
-        root: "."
+        references: settings.dependencies && settings.dependencies.map(
+            (dependency: string): string => {
+                return `../typings/${dependency}.d.ts`;
+            }),
+        root: ".",
+        target: "commonjs"
     };
 
     return typespace(typeSettings)
-        // todo: append the if module and exports stuff
         .pipe(settings.gulp.dest(Constants.folders.lib));
 }
