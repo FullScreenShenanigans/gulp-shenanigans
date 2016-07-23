@@ -11,8 +11,7 @@ export function taskDist(settings: IGulpSettings, callback: Function) {
     const tsSource = `${Constants.folders.lib}/${settings.packageName}.ts`;
     const tsResult = settings.gulp.src(tsSource)
         .pipe(ts({
-            declaration: true,
-            noExternalResolve: true
+            declaration: true
         }));
 
     return merge([
