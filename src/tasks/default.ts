@@ -10,6 +10,7 @@ export function taskDefault(settings: IGulpSettings, callback: Function) {
 
     runSequence(
         ["clean", "typespace", "tsc", "tslint"],
-        ["test", "dist"],
+        ["dist"],
+        ["test"],
         callback);
 }
