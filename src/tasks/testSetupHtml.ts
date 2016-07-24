@@ -38,7 +38,7 @@ export function taskTestSetupHtml(settings: IGulpSettings, callback: Function) {
 
     mustacheSettings.tests = JSON.parse(fs.readFileSync(`${Constants.folders.test}/tsconfig.json`).toString())
         .files
-        .filter((file: string): boolean => file.indexOf("utilities/") !== 0)
+        .filter((file: string): boolean => file.indexOf("utils/") !== 0)
         .map((test: string): string => {
             const testPath: string = test.replace(".ts", "");
 

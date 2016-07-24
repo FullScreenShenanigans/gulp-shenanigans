@@ -7,5 +7,5 @@ export function taskTestSetupUtilities(settings: IGulpSettings, callback: Functi
     "use strict";
 
     return settings.gulp.src("./node_modules/gulp-shenanigans/src/test/*.?s")
-        .pipe(settings.gulp.dest(`${Constants.folders.test}/utilities`));
+        .pipe(settings.gulp.dest(`${Constants.folders.test}/utils`));
 }
