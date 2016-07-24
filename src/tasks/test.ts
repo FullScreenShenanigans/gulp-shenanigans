@@ -1,12 +1,16 @@
-const mochaPhantomJS = require("gulp-mocha-phantomjs");
-import { IGulpSettings, Constants } from "../main";
+import { IGulpSettings } from "../main";
 
 /**
- * Runs mochaPhantomJs tests.
+ * Sets up, executes, then takes down tests.
  */
-export function taskTest(settings: IGulpSettings) {
+export function taskTest(settings: IGulpSettings, callback: Function) {
     "use strict";
+    const runSequence = require("run-sequence").use(settings.gulp);
 
-    return settings.gulp.src(`${Constants.folders.test}/unit/index.html`)
-        .pipe(mochaPhantomJS());
+    runSequence(
+        ["testSetupHtml", "testSetupUtilities"],
+        ["testSetupScripts"],
+        ["testRun"],
+        ["testTakedown"],
+        callback);
 }

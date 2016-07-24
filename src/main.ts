@@ -5,6 +5,11 @@ import { taskClean } from "./tasks/clean";
 import { taskDefault } from "./tasks/default";
 import { taskDist } from "./tasks/dist";
 import { taskTest } from "./tasks/test";
+import { taskTestRun } from "./tasks/testRun";
+import { taskTestSetupHtml } from "./tasks/testSetupHtml";
+import { taskTestSetupScripts } from "./tasks/testSetupScripts";
+import { taskTestSetupUtilities } from "./tasks/testSetupUtilities";
+import { taskTestTakedown } from "./tasks/testTakedown";
 import { taskTslint } from "./tasks/tslint";
 import { taskTsc } from "./tasks/tsc";
 import { taskTypespace } from "./tasks/typespace";
@@ -74,6 +79,11 @@ const tasks: { [i: string]: ITask } = {
     default: taskDefault,
     dist: taskDist,
     test: taskTest,
+    testRun: taskTestRun,
+    testSetupHtml: taskTestSetupHtml,
+    testSetupScripts: taskTestSetupScripts,
+    testSetupUtilities: taskTestSetupUtilities,
+    testTakedown: taskTestTakedown,
     tslint: taskTslint,
     tsc: taskTsc,
     typespace: taskTypespace,

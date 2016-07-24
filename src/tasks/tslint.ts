@@ -9,6 +9,7 @@ export function taskTslint(settings: IGulpSettings) {
 
     return settings.gulp.src([`${Constants.folders.src}/**/*.ts`])
         .pipe(tslint({
+            configuration: "tslint.json",
             formatter: "verbose"
         }))
         .pipe(tslint.report());

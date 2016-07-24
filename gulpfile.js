@@ -36,5 +36,6 @@ gulp.task("watch", ["default"], () => {
 gulp.task("default", callback => {
     runSequence(
         ["clean", "tslint"],
-        ["tsc"]);
+        ["tsc"],
+        callback);
 });
