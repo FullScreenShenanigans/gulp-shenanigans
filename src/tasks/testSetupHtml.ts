@@ -1,7 +1,7 @@
 const fs = require("fs");
 const mustache = require("gulp-mustache");
 const rename = require("gulp-rename");
-import { IGulpSettings, Constants } from "../main";
+import { IExternal, IGulpSettings, Constants } from "../main";
 
 /**
  * Generates a <script> tag for a .js file.
@@ -34,6 +34,16 @@ export function taskTestSetupHtml(settings: IGulpSettings, callback: Function) {
             .join("\n        ");
     } else {
         mustacheSettings.dependencies = generateScript(`../lib/${settings.packageName}`);
+    }
+
+    if (settings.externals) {
+        mustacheSettings.externals = settings.externals
+            .map((external: IExternal): string => {
+                return generateScript(`../${external.file}`);
+            })
+            .join("\n        ");
+    } else {
+        mustacheSettings.externalScripts = "<!-- (none) -->";
     }
 
     mustacheSettings.tests = JSON.parse(fs.readFileSync(`${Constants.folders.test}/tsconfig.json`).toString())

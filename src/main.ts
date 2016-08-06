@@ -16,13 +16,33 @@ import { taskTypespace } from "./tasks/typespace";
 import { taskWatch } from "./tasks/watch";
 
 /**
+ * Description of an external script dependency.
+ */
+export interface IExternal {
+    /**
+     * The dependency's .js script file location.
+     */
+    file: string;
+
+    /**
+     * The dependency's .d.ts definition file location.
+     */
+    typing: string;
+}
+
+/**
  * Settings for a shenanigans project.
  */
 export interface IGulpSettings {
     /**
-     * Names of project dependencies, if any.
+     * Names of FullScreenShenanigans project dependencies, if any.
      */
     dependencies?: string[];
+
+    /**
+     * Information on external scripts to include, if any.
+     */
+    externals?: IExternal[];
 
     /**
      * Gulp runner for the shenanigans project.
