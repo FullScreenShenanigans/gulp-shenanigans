@@ -15,7 +15,7 @@ export function taskDefault(settings: IGulpSettings, callback: Function) {
 
     if (settings.web) {
         tasks[0].push("scss", "scssLint");
-        tasks[1].push("webCopy");
+        tasks[1].push("processHtml", "webCopy");
     }
 
     runSequence(...tasks, callback);

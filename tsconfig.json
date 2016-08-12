@@ -10,6 +10,7 @@
         "src/tasks/clean.ts",
         "src/tasks/default.ts",
         "src/tasks/dist.ts",
+        "src/tasks/processHtml.ts",
         "src/tasks/scss.ts",
         "src/tasks/scssLint.ts",
         "src/tasks/test.ts",

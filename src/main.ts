@@ -4,6 +4,7 @@
 import { taskClean } from "./tasks/clean";
 import { taskDefault } from "./tasks/default";
 import { taskDist } from "./tasks/dist";
+import { taskProcessHtml } from "./tasks/processHtml";
 import { taskScss } from "./tasks/scss";
 import { taskScssLint } from "./tasks/scssLint";
 import { taskTest } from "./tasks/test";
@@ -130,6 +131,7 @@ const tasks: ITasks = {
  * Web-focused gulp tasks that can be run.
  */
 const webTasks: ITasks = {
+    processHtml: taskProcessHtml,
     scss: taskScss,
     scssLint: taskScssLint,
     webCopy: taskWebCopy

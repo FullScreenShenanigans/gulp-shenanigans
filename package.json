@@ -28,6 +28,7 @@
     "gulp-mocha": "^2.2.0",
     "gulp-mocha-phantomjs": "^0.11.0",
     "gulp-mustache": "^2.2.0",
+    "gulp-processhtml": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-scss": "^1.4.0",
