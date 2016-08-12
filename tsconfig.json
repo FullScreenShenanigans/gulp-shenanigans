@@ -10,6 +10,9 @@
         "src/tasks/clean.ts",
         "src/tasks/default.ts",
         "src/tasks/dist.ts",
+        "src/tasks/processHtml.ts",
+        "src/tasks/scss.ts",
+        "src/tasks/scssLint.ts",
         "src/tasks/test.ts",
         "src/tasks/testRun.ts",
         "src/tasks/testSetupHtml.ts",
@@ -19,6 +22,7 @@
         "src/tasks/tslint.ts",
         "src/tasks/tsc.ts",
         "src/tasks/typespace.ts",
-        "src/tasks/watch.ts"
+        "src/tasks/watch.ts",
+        "src/tasks/webCopy.ts"
     ]
 }

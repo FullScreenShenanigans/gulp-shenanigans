@@ -4,6 +4,9 @@
 import { taskClean } from "./tasks/clean";
 import { taskDefault } from "./tasks/default";
 import { taskDist } from "./tasks/dist";
+import { taskProcessHtml } from "./tasks/processHtml";
+import { taskScss } from "./tasks/scss";
+import { taskScssLint } from "./tasks/scssLint";
 import { taskTest } from "./tasks/test";
 import { taskTestRun } from "./tasks/testRun";
 import { taskTestSetupHtml } from "./tasks/testSetupHtml";
@@ -14,6 +17,7 @@ import { taskTslint } from "./tasks/tslint";
 import { taskTsc } from "./tasks/tsc";
 import { taskTypespace } from "./tasks/typespace";
 import { taskWatch } from "./tasks/watch";
+import { taskWebCopy } from "./tasks/webCopy";
 
 /**
  * Description of an external script dependency.
@@ -53,6 +57,11 @@ export interface IGulpSettings {
      * Name of the shenanigans project.
      */
     packageName: string;
+
+    /**
+     * Whether this project should include web compliation tasks.
+     */
+    web?: boolean;
 }
 
 /**
@@ -92,9 +101,17 @@ interface ITask {
 }
 
 /**
- * Names of gulp tasks that can be run.
+ * Tasks, keyed by name.
  */
-const tasks: { [i: string]: ITask } = {
+interface ITasks {
+    [i: string]: ITask;
+}
+
+
+/**
+ * Default gulp tasks that can be run.
+ */
+const tasks: ITasks = {
     clean: taskClean,
     default: taskDefault,
     dist: taskDist,
@@ -111,6 +128,32 @@ const tasks: { [i: string]: ITask } = {
 };
 
 /**
+ * Web-focused gulp tasks that can be run.
+ */
+const webTasks: ITasks = {
+    processHtml: taskProcessHtml,
+    scss: taskScss,
+    scssLint: taskScssLint,
+    webCopy: taskWebCopy
+};
+
+/**
+ * Adds a set of tasks to gulp.
+ * 
+ * @param settings   Settings for a shenanigans project.
+ * @param tasks   Tasks to be added, keyed by name.
+ */
+function addTasks(settings: IGulpSettings, tasks: ITasks): void {
+    "use strict";
+
+    for (const taskName of Object.keys(tasks)) {
+        settings.gulp.task(
+            taskName,
+            (callback: Function): any => tasks[taskName](settings, callback));
+    }
+}
+
+/**
  * Creates gulp tasks for gulp-shenanigans.
  * 
  * @param settings   Settings for a shenanigans project.
@@ -118,9 +161,9 @@ const tasks: { [i: string]: ITask } = {
 export function initialize(settings: IGulpSettings): void {
     "use strict";
 
-    for (const taskName of Object.keys(tasks)) {
-        settings.gulp.task(
-            taskName,
-            (callback: Function): any => tasks[taskName](settings, callback));
+    addTasks(settings, tasks);
+
+    if (settings.web) {
+        addTasks(settings, webTasks);
     }
 };
