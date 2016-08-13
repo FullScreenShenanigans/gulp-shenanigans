@@ -12,5 +12,5 @@ export default function (settings: IGulpSettings, callback: Function) {
         tasks.push("web:scss", "web:scssLint");
     }
 
-    require("run-sequence").use(settings.gulp)(...tasks, callback);
+    require("run-sequence").use(settings.gulp)(tasks, callback);
 }
