@@ -25,6 +25,7 @@
         "src/tasks/test/setupUtilities.ts",
         "src/tasks/test/takedown.ts",
         "src/tasks/web/copy.ts",
+        "src/tasks/web/cssMin.ts",
         "src/tasks/web/scss.ts",
         "src/tasks/web/scssLint.ts",
         "src/tasks/web/processHtml.ts"

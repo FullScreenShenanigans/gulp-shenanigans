@@ -77,6 +77,13 @@ export const Constants = {
         lib: "lib",
 
         /**
+         * Folders of resources for web projects.
+         */
+        resources: [
+            "fonts", "sounds", "theme"
+        ],
+
+        /**
          * Location of all source code.
          */
         src: "src",

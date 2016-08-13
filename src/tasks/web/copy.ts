@@ -6,6 +6,14 @@ import { Constants, IGulpSettings } from "../../definitions";
 export default function (settings: IGulpSettings) {
     "use strict";
 
-    return settings.gulp.src(`${Constants.folders.src}/*.css`)
+    const folders: string[] = Constants.folders.resources
+        .map((folder: string): string => {
+            return `${Constants.folders.src}/${folder}/**/*`;
+        });
+
+    return settings.gulp
+        .src(folders, {
+            base: Constants.folders.src
+        })
         .pipe(settings.gulp.dest(Constants.folders.lib));
 }
