@@ -1,10 +1,10 @@
 const processHtml = require("gulp-processhtml");
-import { Constants, IGulpSettings } from "../main";
+import { Constants, IGulpSettings } from "../../definitions";
 
 /**
  * Process HTML files.
  */
-export function taskProcessHtml(settings: IGulpSettings) {
+export default function (settings: IGulpSettings) {
     "use strict";
 
     return settings.gulp.src(`${Constants.folders.src}/*.html`)

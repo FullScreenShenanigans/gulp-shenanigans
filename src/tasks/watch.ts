@@ -1,11 +1,11 @@
 "use strict";
 
-import { IGulpSettings, Constants } from "../main";
+import { Constants, IGulpSettings } from "../definitions";
 
 /**
  * Runs the default task whenever a source file changes.
  */
-export function taskWatch(settings: IGulpSettings) {
+export default function taskWatch(settings: IGulpSettings) {
     "use strict";
 
     return settings.gulp.watch(

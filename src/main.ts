@@ -1,155 +1,68 @@
 /// <reference path="../node_modules/@types/node/index.d.ts" />
 "use strict";
 
-import { taskClean } from "./tasks/clean";
-import { taskDefault } from "./tasks/default";
-import { taskDist } from "./tasks/dist";
-import { taskProcessHtml } from "./tasks/processHtml";
-import { taskScss } from "./tasks/scss";
-import { taskScssLint } from "./tasks/scssLint";
-import { taskTest } from "./tasks/test";
-import { taskTestRun } from "./tasks/testRun";
-import { taskTestSetupHtml } from "./tasks/testSetupHtml";
-import { taskTestSetupScripts } from "./tasks/testSetupScripts";
-import { taskTestSetupUtilities } from "./tasks/testSetupUtilities";
-import { taskTestTakedown } from "./tasks/testTakedown";
-import { taskTslint } from "./tasks/tslint";
-import { taskTsc } from "./tasks/tsc";
-import { taskTypespace } from "./tasks/typespace";
-import { taskWatch } from "./tasks/watch";
-import { taskWebCopy } from "./tasks/webCopy";
+import * as fs from "fs";
+import * as path from "path";
 
-/**
- * Description of an external script dependency.
- */
-export interface IExternal {
+import { Constants, IGulpSettings, ITask } from "./definitions";
+
+class GulpShenanigans {
     /**
-     * The dependency's .js script file location.
+     * Settings for the shenanigans project.
      */
-    file: string;
+    private settings: IGulpSettings;
 
     /**
-     * The dependency's .d.ts definition file location.
+     * Initializes a new instance of the GulpShenanigans class.
+     * 
+     * @param settings   Settings for a shenanigans project.
      */
-    typing: string;
-}
-
-/**
- * Settings for a shenanigans project.
- */
-export interface IGulpSettings {
-    /**
-     * Names of FullScreenShenanigans project dependencies, if any.
-     */
-    dependencies?: string[];
-
-    /**
-     * Information on external scripts to include, if any.
-     */
-    externals?: IExternal[];
-
-    /**
-     * Gulp runner for the shenanigans project.
-     */
-    gulp: any;
-
-    /**
-     * Name of the shenanigans project.
-     */
-    packageName: string;
-
-    /**
-     * Whether this project should include web compliation tasks.
-     */
-    web?: boolean;
-}
-
-/**
- * Constants used across tasks.
- */
-export const Constants = {
-    /**
-     * Locations of package folders.
-     */
-    folders: {
-        /**
-         * Output destination for built code.
-         */
-        lib: "lib",
-
-        /**
-         * Location of all source code.
-         */
-        src: "src",
-
-        /**
-         * Location of all test code.
-         */
-        test: "test"
+    public constructor(settings: IGulpSettings) {
+        this.settings = settings;
     }
-};
 
-/**
- * Imported function to run as a Gulp task.
- * 
- * @param settings   Settings for a shenanigans project.
- * @param callback   Node-style callback, if a stream isn't returned.
- * @returns Either a stream or void (to indicate the callback will be used).
- */
-interface ITask {
-    (settings: IGulpSettings, callback: Function): any;
-}
+    /**
+     * Loads tasks from the file system and registers them in Gulp.
+     */
+    public initializeTasks(): void {
+        this.addTasksInGroup();
 
-/**
- * Tasks, keyed by name.
- */
-interface ITasks {
-    [i: string]: ITask;
-}
+        for (const group in this.settings.taskGroups) {
+            if (this.settings.taskGroups.hasOwnProperty(group)) {
+                this.addTasksInGroup(group);
+            }
+        }
+    }
 
+    /**
+     * Loads tasks from a directory.
+     * 
+     * @param group   The name of the directory, as the task's parent group (if any).
+     */
+    private addTasksInGroup(group: string = ""): void {
+        const directoryPath: string = path.join(__dirname, Constants.tasks.root, group);
+        const children: string[] = fs.readdirSync(directoryPath)
+            .filter((child: string): boolean => child.indexOf(".js") !== -1)
+            .map((child: string): string => child.replace(".js", ""));
 
-/**
- * Default gulp tasks that can be run.
- */
-const tasks: ITasks = {
-    clean: taskClean,
-    default: taskDefault,
-    dist: taskDist,
-    test: taskTest,
-    testRun: taskTestRun,
-    testSetupHtml: taskTestSetupHtml,
-    testSetupScripts: taskTestSetupScripts,
-    testSetupUtilities: taskTestSetupUtilities,
-    testTakedown: taskTestTakedown,
-    tslint: taskTslint,
-    tsc: taskTsc,
-    typespace: taskTypespace,
-    watch: taskWatch
-};
+        for (const child of children) {
+            const task: ITask = require(path.join(directoryPath, child)).default;
 
-/**
- * Web-focused gulp tasks that can be run.
- */
-const webTasks: ITasks = {
-    processHtml: taskProcessHtml,
-    scss: taskScss,
-    scssLint: taskScssLint,
-    webCopy: taskWebCopy
-};
+            this.settings.gulp.task(
+                this.generateTaskName(group, child),
+                (callback: Function): any => task(this.settings, callback));
+        }
+    }
 
-/**
- * Adds a set of tasks to gulp.
- * 
- * @param settings   Settings for a shenanigans project.
- * @param tasks   Tasks to be added, keyed by name.
- */
-function addTasks(settings: IGulpSettings, tasks: ITasks): void {
-    "use strict";
-
-    for (const taskName of Object.keys(tasks)) {
-        settings.gulp.task(
-            taskName,
-            (callback: Function): any => tasks[taskName](settings, callback));
+    /**
+     * Generates a tasks's name from its components.
+     * 
+     * @param group   The task's parent group (if any).
+     */
+    private generateTaskName(group: string, child: string): string {
+        return [group, child]
+            .filter((component: string): boolean => !!component)
+            .join(":");
     }
 }
 
@@ -161,9 +74,6 @@ function addTasks(settings: IGulpSettings, tasks: ITasks): void {
 export function initialize(settings: IGulpSettings): void {
     "use strict";
 
-    addTasks(settings, tasks);
-
-    if (settings.web) {
-        addTasks(settings, webTasks);
-    }
+    const shenanigans: GulpShenanigans = new GulpShenanigans(settings);
+    shenanigans.initializeTasks();
 };

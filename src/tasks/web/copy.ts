@@ -1,9 +1,9 @@
-import { Constants, IGulpSettings } from "../main";
+import { Constants, IGulpSettings } from "../../definitions";
 
 /**
  * Copies .css files to the destination folder.
  */
-export function taskWebCopy(settings: IGulpSettings) {
+export default function (settings: IGulpSettings) {
     "use strict";
 
     return settings.gulp.src(`${Constants.folders.src}/*.css`)

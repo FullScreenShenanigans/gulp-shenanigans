@@ -6,11 +6,11 @@ import { IGulpSettings } from "../definitions";
 export default function (settings: IGulpSettings, callback: Function) {
     "use strict";
 
-    const tasks: string[][] = [
-        ["run"],
-        ["setupHtml", "setupScripts", "setupUtilities"],
-        ["takedown"]
-    ];
+    const tasks: string[] = ["src:clean", "src:tsc", "src:tslint"];
+
+    if (settings.taskGroups.web) {
+        tasks.push("web:scss", "web:scssLint");
+    }
 
     require("run-sequence").use(settings.gulp)(...tasks, callback);
 }
