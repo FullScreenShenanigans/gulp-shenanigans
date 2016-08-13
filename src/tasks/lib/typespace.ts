@@ -2,7 +2,10 @@ const typespace = require("gulp-typespace");
 import { IExternal, IGulpSettings, Constants } from "../../definitions";
 
 /**
+ * Collects names of required typings files from project settings.
  * 
+ * @param settings   Settings for a shenanigans project.
+ * @returns   Names of required typings files for the project.
  */
 function collectTypings(settings: IGulpSettings): string[] {
     "use strict";
@@ -27,7 +30,7 @@ function collectTypings(settings: IGulpSettings): string[] {
 /**
  * Converts node-style .ts source files into a namespace-style .ts file.
  */
-export default function taskTypespace(settings: IGulpSettings) {
+export default function (settings: IGulpSettings) {
     "use strict";
 
     const typeSettings = {

@@ -47,10 +47,15 @@ class MochaLoader {
      * Initializes a new instance of the MochaLoader class.
      * 
      * @param mocha   The underlying mocha instance.
+     * @param require   The global require instance.
      */
-    public constructor(mocha: any) {
+    public constructor(mocha: any, require: any) {
         this.mocha = mocha;
         this.mocha.setup("bdd");
+
+        require.config({
+            baseUrl: "../lib"
+        });
     }
 
     /**

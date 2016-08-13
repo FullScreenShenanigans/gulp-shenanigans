@@ -16,6 +16,7 @@
         "src/tasks/web.ts",
         "src/tasks/lib/dist.ts",
         "src/tasks/lib/typespace.ts",
+        "src/tasks/lib/uglify.ts",
         "src/tasks/src/clean.ts",
         "src/tasks/src/tsc.ts",
         "src/tasks/src/tslint.ts",
