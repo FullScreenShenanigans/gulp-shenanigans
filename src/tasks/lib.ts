@@ -12,7 +12,7 @@ export default function (settings: IGulpSettings, callback: Function) {
     ];
 
     if (settings.taskGroups.web) {
-        tasks.push(["web:processHtml", "web:copy"]);
+        tasks.push(["web:processHtml", "web:copy", "web:cssMin"]);
     }
 
     require("run-sequence").use(settings.gulp)(...tasks, callback);
