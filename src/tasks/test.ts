@@ -7,9 +7,9 @@ export default function (settings: IGulpSettings, callback: Function) {
     "use strict";
 
     const tasks: string[][] = [
-        ["run"],
-        ["setupHtml", "setupScripts", "setupUtilities"],
-        ["takedown"]
+        ["test:setupHtml", "test:setupScripts", "test:setupUtilities"],
+        ["test:run"],
+        ["test:takedown"]
     ];
 
     require("run-sequence").use(settings.gulp)(...tasks, callback);
