@@ -1,10 +1,10 @@
 const ts = require("gulp-typescript");
-import { IGulpSettings, Constants } from "../main";
+import { IGulpSettings, Constants } from "../../definitions";
 
 /**
  * Compiles test .ts files to .js in-place.
  */
-export function taskTestSetupScripts(settings: IGulpSettings, callback: Function) {
+export default function taskTestSetupScripts(settings: IGulpSettings, callback: Function) {
     "use strict";
 
     const tsProject = ts.createProject(`${Constants.folders.test}/tsconfig.json`);

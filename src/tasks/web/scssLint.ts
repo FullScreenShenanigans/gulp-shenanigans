@@ -1,10 +1,10 @@
 const lint = require("gulp-sass");
-import { Constants, IGulpSettings } from "../main";
+import { Constants, IGulpSettings } from "../../definitions";
 
 /**
  * Runs scss-lint on source files.
  */
-export function taskScssLint(settings: IGulpSettings) {
+export default function (settings: IGulpSettings) {
     "use strict";
 
     return settings.gulp.src(`${Constants.folders.src}/*.scss`)

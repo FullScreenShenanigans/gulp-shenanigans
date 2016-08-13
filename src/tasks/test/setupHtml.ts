@@ -1,7 +1,7 @@
 const fs = require("fs");
 const mustache = require("gulp-mustache");
 const rename = require("gulp-rename");
-import { IExternal, IGulpSettings, Constants } from "../main";
+import { IExternal, IGulpSettings, Constants } from "../../definitions";
 
 /**
  * Generates a <script> tag for a .js file.
@@ -18,7 +18,7 @@ function generateScript(src: string): string {
 /**
  * Sets up for tests.
  */
-export function taskTestSetupHtml(settings: IGulpSettings, callback: Function) {
+export default function taskTestSetupHtml(settings: IGulpSettings, callback: Function) {
     "use strict";
 
     const mustacheSettings: any = {

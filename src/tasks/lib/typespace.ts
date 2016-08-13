@@ -1,5 +1,5 @@
 const typespace = require("gulp-typespace");
-import { IExternal, IGulpSettings, Constants } from "../main";
+import { IExternal, IGulpSettings, Constants } from "../../definitions";
 
 /**
  * 
@@ -27,7 +27,7 @@ function collectTypings(settings: IGulpSettings): string[] {
 /**
  * Converts node-style .ts source files into a namespace-style .ts file.
  */
-export function taskTypespace(settings: IGulpSettings) {
+export default function taskTypespace(settings: IGulpSettings) {
     "use strict";
 
     const typeSettings = {

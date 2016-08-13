@@ -1,11 +1,11 @@
 const merge = require("merge2");
 const ts = require("gulp-typescript");
-import { IGulpSettings, Constants } from "../main";
+import { IGulpSettings, Constants } from "../../definitions";
 
 /**
  * Generates distribution .js files from the Typespace .ts output.
  */
-export function taskDist(settings: IGulpSettings, callback: Function) {
+export default function taskDist(settings: IGulpSettings, callback: Function) {
     "use strict";
 
     const tsSource = `${Constants.folders.lib}/${settings.packageName}.ts`;
