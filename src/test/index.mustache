@@ -33,8 +33,10 @@
         {{{tests}}}
 
         <script type="text/javascript">
-            mochaLoader.describeTests();
-            mochaLoader.run();
+            document.addEventListener("DOMContentLoaded", function () {
+                mochaLoader.describeTests();
+                mochaLoader.run();
+            });
         </script>
         <!-- Tests: End -->
     </body>
