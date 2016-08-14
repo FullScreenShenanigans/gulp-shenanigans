@@ -1,5 +1,3 @@
-"use strict";
-
 import { Constants, IGulpSettings } from "../definitions";
 
 /**
@@ -8,10 +6,20 @@ import { Constants, IGulpSettings } from "../definitions";
 export default function taskWatch(settings: IGulpSettings) {
     "use strict";
 
-    return settings.gulp.watch(
-        [
-            `${Constants.folders.src}/**/*.ts`,
-            `${Constants.folders.test}/**/*.js`
-        ],
-        ["default"]);
+    settings.gulp.watch(
+        `${Constants.folders.src}/**/*.ts`,
+        ["src:tsc"]);
+
+    settings.gulp.watch(
+        `${Constants.folders.test}/**/*.ts`,
+        [`test`]);
+
+    if (settings.taskGroups.web) {
+        settings.gulp.watch(
+            [
+                `${Constants.folders.src}/*.html`,
+                `${Constants.folders.src}/*.scss`
+            ],
+            ["web"]);
+    }
 }

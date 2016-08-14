@@ -41,12 +41,9 @@ export interface IGulpSettings {
     packageName: string;
 
     /**
-     * Directories of tasks to include.
+     * Directories of optional tasks to include.
      */
     taskGroups: {
-        lib: boolean;
-        src: boolean;
-        test: boolean;
         web: boolean;
         [i:string]: boolean;
     };
@@ -67,6 +64,11 @@ export interface ITask {
  * Constants used across tasks.
  */
 export const Constants = {
+    /**
+     * Default task groups to run.
+     */
+    defaultTaskGroups: ["lib", "setup", "src", "test"],
+
     /**
      * Locations of package folders.
      */

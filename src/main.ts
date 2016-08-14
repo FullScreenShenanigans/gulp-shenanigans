@@ -27,6 +27,10 @@ class GulpShenanigans {
     public initializeTasks(): void {
         this.addTasksInGroup();
 
+        for (const group of Constants.defaultTaskGroups) {
+            this.addTasksInGroup(group);
+        }
+
         for (const group in this.settings.taskGroups) {
             if (this.settings.taskGroups.hasOwnProperty(group)) {
                 this.addTasksInGroup(group);

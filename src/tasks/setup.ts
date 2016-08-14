@@ -1,4 +1,3 @@
-const rename = require("gulp-rename");
 import { IGulpSettings } from "../definitions";
 
 /**
@@ -7,14 +6,10 @@ import { IGulpSettings } from "../definitions";
 export default function (settings: IGulpSettings, callback: Function) {
     "use strict";
 
-    return settings.gulp
-        .src(
-            ["./node_modules/gulp-shenanigans/src/setup/*"],
-            {
-                dot: true
-            })
-        .pipe(rename({
-            dirname: ""
-        }))
-        .pipe(settings.gulp.dest("."));
+    const tasks: string[] = [
+        "setup:clean",
+        "setup:copy",
+    ];
+
+    require("run-sequence").use(settings.gulp)(tasks, callback);
 }
