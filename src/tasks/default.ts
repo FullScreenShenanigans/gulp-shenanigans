@@ -6,5 +6,6 @@ import { IGulpSettings } from "../definitions";
 export default function taskDefault(settings: IGulpSettings, callback: Function) {
     "use strict";
 
-    require("run-sequence").use(settings.gulp)(["src"], ["lib"], ["test"], callback);
+    require("run-sequence").use(settings.gulp)(
+        ["setup"], ["src"], ["lib"], ["test"], callback);
 }

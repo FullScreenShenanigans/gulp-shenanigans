@@ -1,7 +1,7 @@
 import { IGulpSettings } from "../definitions";
 
 /**
- * One task to run them all.
+ * Sets up test scaffolding, then runs tests.
  */
 export default function (settings: IGulpSettings, callback: Function) {
     "use strict";
@@ -9,8 +9,7 @@ export default function (settings: IGulpSettings, callback: Function) {
     const tasks: string[][] = [
         ["test:setupHtml", "test:setupUtilities"],
         ["test:setupScripts"],
-        ["test:run"],
-        ["test:takedown"]
+        ["test:run"]
     ];
 
     require("run-sequence").use(settings.gulp)(...tasks, callback);

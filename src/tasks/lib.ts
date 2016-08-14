@@ -9,11 +9,11 @@ export default function (settings: IGulpSettings, callback: Function) {
     const tasks: string[][] = [
         ["lib:typespace"],
         ["lib:dist"],
-        ["lib:uglify"]
     ];
 
     if (settings.taskGroups.web) {
         tasks[0].push("web:processHtml", "web:copy", "web:cssMin");
+        tasks.push(["web:uglify"]);
     }
 
     require("run-sequence").use(settings.gulp)(...tasks, callback);

@@ -6,7 +6,7 @@ import { IGulpSettings } from "../definitions";
 export default function (settings: IGulpSettings, callback: Function) {
     "use strict";
 
-    const tasks: string[] = ["src:clean", "src:tsc", "src:tslint"];
+    const tasks: string[] = ["src:tsc", "src:tslint"];
 
     if (settings.taskGroups.web) {
         tasks.push("web:scss", "web:scssLint");
