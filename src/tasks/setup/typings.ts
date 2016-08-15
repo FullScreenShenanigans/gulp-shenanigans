@@ -1,6 +1,5 @@
 const fs: any = require("fs");
 const merge: any = require("merge2");
-const path: any = require("path");
 import { Constants, IExternal, IGulpSettings } from "../../definitions";
 
 /**
@@ -41,8 +40,8 @@ export default function (settings: IGulpSettings): any {
 
     for (const file of Object.keys(files)) {
         streams.push(
-            fs.createReadStream(files[file])
-                .pipe(fs.createWriteStream(`${Constants.folders.typings}/${file}.d.ts`)));
+            settings.gulp.src(files[file])
+                .pipe(settings.gulp.dest(`${Constants.folders.typings}/${file}.d.ts`)));
     }
 
     return merge(streams);
