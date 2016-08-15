@@ -1,3 +1,4 @@
+const merge: any = require("merge2");
 const fs: any = require("fs");
 import { Constants, IExternal, IGulpSettings } from "../../definitions";
 
@@ -13,7 +14,7 @@ function collectTypingsFiles(settings: IGulpSettings): { [i: string]: string } {
     const files: { [i: string]: string } = {};
 
     for (const dependency of Object.keys(settings.dependencies)) {
-        files[dependency] = `node_modules/${dependency}/lib/${dependency}.d.ts`;
+        files[dependency] = `node_modules/${dependency.toLowerCase()}/lib/${dependency}.d.ts`;
     }
 
     for (const i in settings.externals) {
@@ -35,9 +36,13 @@ export default function (settings: IGulpSettings): any {
     "use strict";
 
     const files: { [i: string]: string } = collectTypingsFiles(settings);
+    const streams: any[] = [];
 
     for (const file of Object.keys(files)) {
-        fs.createReadStream(files[file])
-            .pipe(fs.createWriteStream(`${Constants.folders.typings}/${file}.d.ts`));
+        streams.push(
+            fs.createReadStream(files[file])
+                .pipe(fs.createWriteStream(`${Constants.folders.typings}/${file}.d.ts`)));
     }
+
+    return merge(streams);
 }
