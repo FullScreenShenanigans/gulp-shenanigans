@@ -25,7 +25,7 @@ export default function taskTestSetupHtml(settings: IGulpSettings, callback: Fun
     };
 
     if (settings.dependencies) {
-        mustacheSettings.dependencies = settings.dependencies
+        mustacheSettings.dependencies = Object.keys(settings.dependencies)
             .map((dependency: string): string => {
                 return generateScript(`../node_modules/${dependency.toLowerCase()}/lib/${dependency}`);
             })

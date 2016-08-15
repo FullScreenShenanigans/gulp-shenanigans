@@ -29,8 +29,8 @@ gulp.task("tsc", () => {
     ]);
 });
 
-gulp.task("watch", ["default"], () => {
-    return gulp.watch(["src/**/*.ts"], ["default"]);
+gulp.task("watch", ["tsc"], () => {
+    return gulp.watch(["src/**/*.ts"], ["tsc"]);
 });
 
 gulp.task("default", callback => {

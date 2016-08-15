@@ -14,7 +14,7 @@ function collectTypings(settings: IGulpSettings): string[] {
 
     if (settings.dependencies) {
         typings.push(
-            ...settings.dependencies.map(
+            ...Object.keys(settings.dependencies).map(
                 (dependency: string): string => `../typings/${dependency}.d.ts`));
     }
 

@@ -15,7 +15,7 @@ function collectScriptFiles(settings: IGulpSettings): string[] {
 
     if (settings.dependencies) {
         files.push(
-            ...settings.dependencies.map(
+            ...Object.keys(settings.dependencies).map(
                 (dependency: string): string => {
                     return `node_modules/${dependency.toLowerCase()}/lib/${dependency}.js`;
                 }));

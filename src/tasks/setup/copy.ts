@@ -1,3 +1,4 @@
+const mustache: any = require("gulp-mustache");
 const rename: any = require("gulp-rename");
 import { IGulpSettings } from "../../definitions";
 
@@ -13,6 +14,7 @@ export default function taskClean(settings: IGulpSettings): any {
             {
                 dot: true
             })
+        .pipe(mustache(settings))
         .pipe(rename({
             dirname: ""
         }))

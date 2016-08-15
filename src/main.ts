@@ -80,9 +80,10 @@ export function initialize(gulp: any): void {
 
     const settings: IGulpSettings = JSON.parse(fs.readFileSync("./shenanigans.json").toString());
     settings.gulp = gulp;
+    settings.shenanigans = JSON.parse(fs.readFileSync(`${__dirname}/../package.json`).toString());
 
-    if (settings.package.nodeName) {
-        settings.package.nodeName = settings.package.name;
+    if (!settings.package.nodeName) {
+        settings.package.nodeName = settings.package.name.toLowerCase();
     }
 
     if (!settings.taskGroups) {

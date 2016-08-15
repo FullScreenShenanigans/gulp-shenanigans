@@ -21,9 +21,11 @@ export interface IExternal {
  */
 export interface IProjectSchema {
     /**
-     * Names of FullScreenShenanigans project dependencies, if any.
+     * Names and versions of FullScreenShenanigans project dependencies, if any.
      */
-    dependencies?: string[];
+    dependencies?: {
+        [i: string]: string;
+    };
 
     /**
      * Information on external scripts to include, if any.
@@ -48,6 +50,11 @@ export interface IProjectSchema {
          * Lowercase Node module name (by default, `name` lowercased).
          */
         nodeName: string;
+
+        /**
+         * Semver package version.
+         */
+        version: string;
     };
 
     /**
@@ -67,6 +74,11 @@ export interface IGulpSettings extends IProjectSchema {
      * Gulp runner for the shenanigans project.
      */
     gulp: any;
+
+    /**
+     * Package settings for gulp-shenanigans.
+     */
+    shenanigans: any;
 }
 
 /**
