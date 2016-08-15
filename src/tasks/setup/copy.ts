@@ -5,7 +5,7 @@ import { IGulpSettings } from "../../definitions";
 /**
  * Deletes all built files.
  */
-export default function taskClean(settings: IGulpSettings): any {
+export default function (settings: IGulpSettings): any {
     "use strict";
 
     return settings.gulp

@@ -6,11 +6,14 @@ import { IGulpSettings } from "../definitions";
 export default function (settings: IGulpSettings, callback: Function): void {
     "use strict";
 
-    const tasks: string[] = [
-        "setup:clean",
-        "setup:copy",
-        "setup:package"
+    const tasks: string[][] = [
+        ["setup:clean"],
+        [
+            "setup:copy",
+            "setup:package",
+            "setup:typings"
+        ]
     ];
 
-    require("run-sequence").use(settings.gulp)(tasks, callback);
+    require("run-sequence").use(settings.gulp)(...tasks, callback);
 }
