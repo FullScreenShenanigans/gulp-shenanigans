@@ -1,6 +1,6 @@
 {
   "name": "gulp-shenanigans",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "Unified Gulp tasks for FullScreenShenanigans projects.",
   "main": "lib/main.js",
   "repository": {
