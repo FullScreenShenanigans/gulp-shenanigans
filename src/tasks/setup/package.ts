@@ -10,6 +10,23 @@ import { IGulpSettings } from "../../definitions";
 export default function taskClean(settings: IGulpSettings): any {
     "use strict";
 
+    const dependencies: any = {};
+    const devDependencies: any = {
+        "gulp-shenanigans": `^${settings.shenanigans.version}`
+    };
+
+    for (const i of Object.keys(settings.dependencies)) {
+        dependencies[i] = settings.dependencies[i];
+    }
+
+    for (const i of Object.keys(settings.node_modules.dependencies)) {
+        dependencies[i] = settings.node_modules.dependencies[i];
+    }
+
+    for (const i of Object.keys(settings.node_modules.devDependencies)) {
+        devDependencies[i] = settings.node_modules.devDependencies[i];
+    }
+
     const packageInfo: any = {
         name: settings.package.nodeName,
         description: settings.package.description,
@@ -26,10 +43,8 @@ export default function taskClean(settings: IGulpSettings): any {
             url: `https://github.com/FullScreenShenanigans/${settings.package.name}/issues`
         },
         license: "MIT",
-        dependencies: settings.dependencies,
-        devDependencies: {
-            "gulp-shenanigans": `^${settings.shenanigans.version}`
-        }
+        dependencies: dependencies,
+        devDependencies: devDependencies
     };
 
     return file("package.json", JSON.stringify(packageInfo), { src: true })

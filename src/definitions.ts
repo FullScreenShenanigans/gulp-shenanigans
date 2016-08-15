@@ -33,6 +33,25 @@ export interface IProjectSchema {
     externals?: IExternal[];
 
     /**
+     * Node module dependencies and devDependencies, if any.
+     */
+    node_modules?: {
+        /**
+         * Names and versions of general Node module dependencies, if any.
+         */
+        dependencies?: {
+            [i: string]: string;
+        };
+
+        /**
+         * Names and versions of general Node module devDependencies, if any.
+         */
+        devDependencies?: {
+            [i: string]: string;
+        };
+    };
+
+    /**
      * Metadata on the project.
      */
     package: {

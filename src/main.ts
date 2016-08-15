@@ -90,6 +90,10 @@ export function initialize(gulp: any): void {
         settings.taskGroups = {};
     }
 
+    if (!settings.node_modules) {
+        settings.node_modules = {};
+    }
+
     new GulpShenanigans(settings).initializeTasks();
 };
 
