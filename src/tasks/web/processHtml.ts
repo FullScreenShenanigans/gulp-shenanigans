@@ -1,11 +1,11 @@
-const htmlmin = require("gulp-htmlmin");
-const processHtml = require("gulp-processhtml");
+const htmlmin: any = require("gulp-htmlmin");
+const processHtml: any = require("gulp-processhtml");
 import { Constants, IGulpSettings } from "../../definitions";
 
 /**
  * Process HTML files.
  */
-export default function (settings: IGulpSettings) {
+export default function (settings: IGulpSettings): any {
     "use strict";
 
     return settings.gulp.src(`${Constants.folders.src}/*.html`)

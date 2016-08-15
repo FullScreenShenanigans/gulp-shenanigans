@@ -1,10 +1,10 @@
-const del = require("del");
+const del: any = require("del");
 import { Constants } from "../../definitions";
 
 /**
  * Deletes all built files.
  */
-export default function taskClean() {
+export default function (): any {
     "use strict";
 
     return del([

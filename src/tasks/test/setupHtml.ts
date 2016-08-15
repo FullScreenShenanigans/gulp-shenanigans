@@ -1,7 +1,6 @@
-const fs = require("fs");
-const mustache = require("gulp-mustache");
-const rename = require("gulp-rename");
-import { IExternal, IGulpSettings, Constants } from "../../definitions";
+const fs: any = require("fs");
+const mustache: any = require("gulp-mustache");
+import { Constants, IExternal, IGulpSettings } from "../../definitions";
 
 /**
  * Generates a <script> tag for a .js file.
@@ -18,11 +17,11 @@ function generateScript(src: string): string {
 /**
  * Sets up for tests.
  */
-export default function taskTestSetupHtml(settings: IGulpSettings, callback: Function) {
+export default function taskTestSetupHtml(settings: IGulpSettings, callback: Function): any {
     "use strict";
 
     const mustacheSettings: any = {
-        packageName: settings.packageName
+        package: settings.package
     };
 
     if (settings.dependencies) {
@@ -30,10 +29,10 @@ export default function taskTestSetupHtml(settings: IGulpSettings, callback: Fun
             .map((dependency: string): string => {
                 return generateScript(`../node_modules/${dependency.toLowerCase()}/lib/${dependency}`);
             })
-            .concat(generateScript(`../lib/${settings.packageName}`))
+            .concat(generateScript(`../lib/${settings.package.name}`))
             .join("\n        ");
     } else {
-        mustacheSettings.dependencies = generateScript(`../lib/${settings.packageName}`);
+        mustacheSettings.dependencies = generateScript(`../lib/${settings.package.name}`);
     }
 
     if (settings.externals) {
@@ -59,8 +58,7 @@ export default function taskTestSetupHtml(settings: IGulpSettings, callback: Fun
         })
         .join("\n        ");
 
-    return settings.gulp.src("./node_modules/gulp-shenanigans/src/test/index.mustache")
+    return settings.gulp.src("./node_modules/gulp-shenanigans/src/test/index.html")
         .pipe(mustache(mustacheSettings))
-        .pipe(rename("index.html"))
         .pipe(settings.gulp.dest(`${Constants.folders.test}`));
 }

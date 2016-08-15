@@ -1,10 +1,10 @@
-const tslint = require("gulp-tslint");
-import { IGulpSettings, Constants } from "../../definitions";
+const tslint: any = require("gulp-tslint");
+import { Constants, IGulpSettings } from "../../definitions";
 
 /**
  * Runs TSLint on source files.
  */
-export default function taskTslint(settings: IGulpSettings) {
+export default function taskTslint(settings: IGulpSettings): any {
     "use strict";
 
     return settings.gulp.src([`${Constants.folders.src}/**/*.ts`])

@@ -1,10 +1,10 @@
-const rename = require("gulp-rename");
+const rename: any = require("gulp-rename");
 import { IGulpSettings } from "../../definitions";
 
 /**
  * Deletes all built files.
  */
-export default function taskClean(settings: IGulpSettings) {
+export default function taskClean(settings: IGulpSettings): any {
     "use strict";
 
     return settings.gulp

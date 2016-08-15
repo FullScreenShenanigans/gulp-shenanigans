@@ -3,7 +3,7 @@ import { IGulpSettings } from "../definitions";
 /**
  * Runs all web-related tasks.
  */
-export default function (settings: IGulpSettings, callback: Function) {
+export default function (settings: IGulpSettings, callback: Function): void {
     "use strict";
 
     const tasks: string[][] = [

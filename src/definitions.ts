@@ -19,7 +19,7 @@ export interface IExternal {
 /**
  * Settings for a shenanigans project.
  */
-export interface IGulpSettings {
+export interface IProjectSchema {
     /**
      * Names of FullScreenShenanigans project dependencies, if any.
      */
@@ -31,22 +31,42 @@ export interface IGulpSettings {
     externals?: IExternal[];
 
     /**
-     * Gulp runner for the shenanigans project.
+     * Metadata on the project.
      */
-    gulp: any;
+    package: {
+        /**
+         * Flavored description of the project.
+         */
+        description: string;
 
-    /**
-     * Name of the shenanigans project.
-     */
-    packageName: string;
+        /**
+         * Case-sensitive repository name.
+         */
+        name: string;
+
+        /**
+         * Lowercase Node module name (by default, `name` lowercased).
+         */
+        nodeName: string;
+    };
 
     /**
      * Directories of optional tasks to include.
      */
-    taskGroups: {
-        web: boolean;
-        [i:string]: boolean;
+    taskGroups?: {
+        web?: boolean;
+        [i: string]: boolean;
     };
+}
+
+/**
+ * 
+ */
+export interface IGulpSettings extends IProjectSchema {
+    /**
+     * Gulp runner for the shenanigans project.
+     */
+    gulp: any;
 }
 
 /**
@@ -59,6 +79,8 @@ export interface IGulpSettings {
 export interface ITask {
     (settings: IGulpSettings, callback: Function): any;
 }
+
+/* tslint:disable typedef */
 
 /**
  * Constants used across tasks.
@@ -106,3 +128,5 @@ export const Constants = {
         root: "tasks"
     }
 };
+
+/* tslint:enable typedef */

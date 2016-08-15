@@ -1,6 +1,6 @@
-const concat = require("gulp-concat");
-const uglify = require("gulp-uglify");
-import { IExternal, IGulpSettings, Constants } from "../../definitions";
+const concat: any = require("gulp-concat");
+const uglify: any = require("gulp-uglify");
+import { Constants, IExternal, IGulpSettings } from "../../definitions";
 
 /**
  * Collects names of required .js files from project settings.
@@ -29,7 +29,7 @@ function collectScriptFiles(settings: IGulpSettings): string[] {
                 }));
     }
 
-    files.push(`lib/${settings.packageName}.js`);
+    files.push(`lib/${settings.package.name}.js`);
 
     return files;
 }
@@ -37,12 +37,12 @@ function collectScriptFiles(settings: IGulpSettings): string[] {
 /**
  * Converts node-style .ts source files into a namespace-style .ts file.
  */
-export default function (settings: IGulpSettings, callback: Function) {
+export default function (settings: IGulpSettings, callback: Function): any {
     "use strict";
 
     return settings.gulp
         .src(collectScriptFiles(settings))
         .pipe(uglify())
-        .pipe(concat(`${settings.packageName}.min.js`))
+        .pipe(concat(`${settings.package.name}.min.js`))
         .pipe(settings.gulp.dest(`${Constants.folders.lib}`));
 }

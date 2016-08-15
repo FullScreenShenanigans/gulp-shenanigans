@@ -73,11 +73,28 @@ class GulpShenanigans {
 /**
  * Creates gulp tasks for gulp-shenanigans.
  * 
- * @param settings   Settings for a shenanigans project.
+ * @param gulp   Settings for a shenanigans project.
  */
-export function initialize(settings: IGulpSettings): void {
+export function initialize(gulp: any): void {
     "use strict";
 
-    const shenanigans: GulpShenanigans = new GulpShenanigans(settings);
-    shenanigans.initializeTasks();
+    const settings: IGulpSettings = JSON.parse(fs.readFileSync("./shenanigans.json").toString());
+    settings.gulp = gulp;
+
+    if (settings.package.nodeName) {
+        settings.package.nodeName = settings.package.name;
+    }
+
+    if (!settings.taskGroups) {
+        settings.taskGroups = {};
+    }
+
+    new GulpShenanigans(settings).initializeTasks();
 };
+
+// For CLI usage, ...
+if (process.argv.indexOf("--init") !== -1) {
+    fs.createReadStream(`${__dirname}/../src/setup/gulpfile.js`)
+        .pipe(fs.createWriteStream("./gulpfile.js"));
+    console.log("Created gulpfile.js");
+}

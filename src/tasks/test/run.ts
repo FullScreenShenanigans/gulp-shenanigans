@@ -1,10 +1,10 @@
-const mochaPhantomJS = require("gulp-mocha-phantomjs");
-import { IGulpSettings, Constants } from "../../definitions";
+const mochaPhantomJS: any = require("gulp-mocha-phantomjs");
+import { Constants, IGulpSettings } from "../../definitions";
 
 /**
  * Runs mochaPhantomJs tests.
  */
-export default function taskTestRun(settings: IGulpSettings) {
+export default function taskTestRun(settings: IGulpSettings): any {
     "use strict";
 
     return settings.gulp.src(`${Constants.folders.test}/index.html`)
