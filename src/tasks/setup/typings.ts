@@ -12,17 +12,21 @@ function collectTypingsFiles(settings: IGulpSettings): { [i: string]: string } {
 
     const files: { [i: string]: string } = {};
 
-    for (const dependency of Object.keys(settings.dependencies)) {
-        files[dependency] = `./node_modules/${dependency.toLowerCase()}/lib/${dependency}.d.ts`;
+    if (settings.dependencies) {
+        for (const dependency of Object.keys(settings.dependencies)) {
+            files[dependency] = `./node_modules/${dependency.toLowerCase()}/lib/${dependency}.d.ts`;
+        }
     }
 
-    for (const i in settings.externals) {
-        if (!settings.externals.hasOwnProperty(i)) {
-            continue;
-        }
+    if (settings.externals) {
+        for (const i in settings.externals) {
+            if (!settings.externals.hasOwnProperty(i)) {
+                continue;
+            }
 
-        const external: IExternal = settings.externals[i];
-        files[external.typing] = `./node_modules/@types/${external.typing}/index.d.ts`;
+            const external: IExternal = settings.externals[i];
+            files[external.typing] = `./node_modules/@types/${external.typing}/index.d.ts`;
+        }
     }
 
     return files;

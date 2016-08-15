@@ -56,10 +56,14 @@ export default function taskClean(settings: IGulpSettings): any {
         bugs: {
             url: `https://github.com/FullScreenShenanigans/${settings.package.name}/issues`
         },
-        license: "MIT",
-        dependencies: dependencies,
-        devDependencies: devDependencies
+        license: "MIT"
     };
+
+    if (dependencies) {
+        packageInfo.dependencies = dependencies;
+    }
+
+    packageInfo.devDependencies = devDependencies;
 
     return file("package.json", JSON.stringify(packageInfo), { src: true })
         .pipe(prettify({
