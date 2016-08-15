@@ -82,16 +82,16 @@ export function initialize(gulp: any): void {
     settings.gulp = gulp;
     settings.shenanigans = JSON.parse(fs.readFileSync(`${__dirname}/../package.json`).toString());
 
+    if (!settings.node_modules) {
+        settings.node_modules = {};
+    }
+
     if (!settings.package.nodeName) {
         settings.package.nodeName = settings.package.name.toLowerCase();
     }
 
     if (!settings.taskGroups) {
         settings.taskGroups = {};
-    }
-
-    if (!settings.node_modules) {
-        settings.node_modules = {};
     }
 
     new GulpShenanigans(settings).initializeTasks();

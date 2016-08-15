@@ -10,21 +10,35 @@ import { IGulpSettings } from "../../definitions";
 export default function taskClean(settings: IGulpSettings): any {
     "use strict";
 
-    const dependencies: any = {};
+    let dependencies: any;
     const devDependencies: any = {
         "gulp-shenanigans": `^${settings.shenanigans.version}`
     };
 
-    for (const i of Object.keys(settings.dependencies)) {
-        dependencies[i] = settings.dependencies[i];
+    if (settings.dependencies) {
+        if (!dependencies) {
+            dependencies = {};
+        }
+
+        for (const i of Object.keys(settings.dependencies)) {
+            dependencies[i] = settings.dependencies[i];
+        }
     }
 
-    for (const i of Object.keys(settings.node_modules.dependencies)) {
-        dependencies[i] = settings.node_modules.dependencies[i];
+    if (settings.node_modules.dependencies) {
+        if (!dependencies) {
+            dependencies = {};
+        }
+
+        for (const i of Object.keys(settings.node_modules.dependencies)) {
+            dependencies[i] = settings.node_modules.dependencies[i];
+        }
     }
 
-    for (const i of Object.keys(settings.node_modules.devDependencies)) {
-        devDependencies[i] = settings.node_modules.devDependencies[i];
+    if (settings.node_modules.devDependencies) {
+        for (const i of Object.keys(settings.node_modules.devDependencies)) {
+            devDependencies[i] = settings.node_modules.devDependencies[i];
+        }
     }
 
     const packageInfo: any = {
