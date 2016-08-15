@@ -1,13 +1,13 @@
-const ts = require("gulp-typescript");
-import { IGulpSettings, Constants } from "../../definitions";
+const ts: any = require("gulp-typescript");
+import { Constants, IGulpSettings } from "../../definitions";
 
 /**
  * Compiles source .ts files in-place.
  */
-export default function taskTsc(settings: IGulpSettings) {
+export default function taskTsc(settings: IGulpSettings): any {
     "use strict";
 
-    const project = ts.createProject("tsconfig.json");
+    const project: any = ts.createProject("tsconfig.json");
     return project
         .src()
         .pipe(ts(project))

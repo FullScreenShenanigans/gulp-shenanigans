@@ -3,7 +3,7 @@ import { Constants, IGulpSettings } from "../definitions";
 /**
  * Runs the default task whenever a source file changes.
  */
-export default function taskWatch(settings: IGulpSettings) {
+export default function (settings: IGulpSettings): void {
     "use strict";
 
     settings.gulp.watch(

@@ -3,7 +3,7 @@ import { IGulpSettings } from "../definitions";
 /**
  * Sets up test scaffolding, then runs tests.
  */
-export default function (settings: IGulpSettings, callback: Function) {
+export default function (settings: IGulpSettings, callback: Function): void {
     "use strict";
 
     const tasks: string[][] = [

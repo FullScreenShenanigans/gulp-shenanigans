@@ -3,7 +3,7 @@ import { Constants, IGulpSettings } from "../../definitions";
 /**
  * Copies .css files to the destination folder.
  */
-export default function (settings: IGulpSettings) {
+export default function (settings: IGulpSettings): any {
     "use strict";
 
     const folders: string[] = Constants.folders.resources

@@ -1,5 +1,5 @@
-const typespace = require("gulp-typespace");
-import { IExternal, IGulpSettings, Constants } from "../../definitions";
+const typespace: any = require("gulp-typespace");
+import { Constants, IExternal, IGulpSettings } from "../../definitions";
 
 /**
  * Collects names of required typings files from project settings.
@@ -30,13 +30,13 @@ function collectTypings(settings: IGulpSettings): string[] {
 /**
  * Converts node-style .ts source files into a namespace-style .ts file.
  */
-export default function (settings: IGulpSettings) {
+export default function (settings: IGulpSettings): any {
     "use strict";
 
-    const typeSettings = {
+    const typeSettings: any = {
         config: "./tsconfig.json",
-        outFile: `${settings.packageName}.ts`,
-        namespace: settings.packageName,
+        outFile: `${settings.package.name}.ts`,
+        namespace: settings.package.name,
         pathPrefix: Constants.folders.src,
         references: collectTypings(settings),
         root: ".",

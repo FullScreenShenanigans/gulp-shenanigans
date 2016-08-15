@@ -1,10 +1,10 @@
-const scss = require("gulp-sass");
+const scss: any = require("gulp-sass");
 import { Constants, IGulpSettings } from "../../definitions";
 
 /**
  * Compiles source .scss files in-place.
  */
-export default function (settings: IGulpSettings) {
+export default function (settings: IGulpSettings): any {
     "use strict";
 
     return settings.gulp.src(`${Constants.folders.src}/*.scss`)
