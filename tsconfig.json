@@ -20,6 +20,7 @@
         "src/tasks/setup/clean.ts",
         "src/tasks/setup/copy.ts",
         "src/tasks/setup/package.ts",
+        "src/tasks/setup/typings.ts",
         "src/tasks/src/tsc.ts",
         "src/tasks/src/tslint.ts",
         "src/tasks/test/run.ts",
