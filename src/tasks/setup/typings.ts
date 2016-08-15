@@ -40,11 +40,6 @@ export default function (settings: IGulpSettings): any {
     const streams: any[] = [];
 
     for (const file of Object.keys(files)) {
-        console.log("Reading from", files[file]);
-        console.log(path.normalize(files[file]));
-        console.log("Writing to", `${Constants.folders.typings}/${file}.d.ts`);
-        console.log(path.normalize(`${Constants.folders.typings}/${file}.d.ts`));
-        console.log("");
         streams.push(
             fs.createReadStream(files[file])
                 .pipe(fs.createWriteStream(`${Constants.folders.typings}/${file}.d.ts`)));
