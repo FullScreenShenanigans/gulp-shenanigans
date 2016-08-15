@@ -21,7 +21,7 @@ export default function taskClean(settings: IGulpSettings): any {
         }
 
         for (const i of Object.keys(settings.dependencies)) {
-            dependencies[i] = settings.dependencies[i];
+            dependencies[i] = settings.dependencies[i].toLowerCase();
         }
     }
 
