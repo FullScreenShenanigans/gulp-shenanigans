@@ -1,4 +1,5 @@
 # gulp-shenanigans
+[![NPM version](https://badge.fury.io/js/gulp-shenanigans.svg)](http://badge.fury.io/js/gulp-shenanigans)
 
 Unified Gulp tasks for FullScreenShenanigans projects.
 
