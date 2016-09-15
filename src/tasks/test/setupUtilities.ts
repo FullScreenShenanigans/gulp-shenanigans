@@ -7,5 +7,5 @@ export default function (settings: IGulpSettings): any {
     "use strict";
 
     return settings.gulp.src("./node_modules/gulp-shenanigans/src/test/*.?s")
-        .pipe(settings.gulp.dest(`${Constants.folders.test}/utils`));
+        .pipe(settings.gulp.dest(`${Constants.folders.test}`));
 }
