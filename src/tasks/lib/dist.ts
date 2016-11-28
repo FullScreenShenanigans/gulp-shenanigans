@@ -1,20 +1,27 @@
 const merge: any = require("merge2");
+const sourcemaps: any = require("gulp-sourcemaps");
 const ts: any = require("gulp-typescript");
+const uglify: any = require("gulp-uglify");
 import { Constants, IGulpSettings } from "../../definitions";
 
 /**
- * Generates distribution .js files from the Typespace .ts output.
+ * Compiles source .ts files in-place.
  */
-export default function (settings: IGulpSettings): void {
+export default function taskTsc(settings: IGulpSettings): any {
     "use strict";
 
     const project: any = ts.createProject("tsconfig.json");
-    const source: any = `${Constants.folders.lib}/${settings.package.name}.ts`;
-    const result: any = settings.gulp.src(source)
+    const output: any = project
+        .src()
+        .pipe(sourcemaps.init())
         .pipe(project());
 
     return merge([
-        result.dts.pipe(settings.gulp.dest(Constants.folders.lib)),
-        result.js.pipe(settings.gulp.dest(Constants.folders.lib))
+        output.js
+            .pipe(uglify())
+            .pipe(sourcemaps.write("."))
+            .pipe(settings.gulp.dest(Constants.folders.lib)),
+        output.dts
+            .pipe(settings.gulp.dest(Constants.folders.lib))
     ]);
 }
