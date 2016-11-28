@@ -120,12 +120,17 @@ export const Constants = {
     /**
      * Default task groups to run.
      */
-    defaultTaskGroups: ["lib", "setup", "src", "test"],
+    defaultTaskGroups: ["docs", "lib", "setup", "src", "test"],
 
     /**
      * Locations of package folders.
      */
     folders: {
+        /**
+         * Output destination for build documentation.
+         */
+        docs: "docs",
+
         /**
          * Output destination for built code.
          */
