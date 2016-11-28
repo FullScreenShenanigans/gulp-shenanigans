@@ -4,7 +4,7 @@
 
 {{package.description}}
 
-{{readmeDetails}}
+{{{readmeDetails}}}
 
 ## Build Process
 
