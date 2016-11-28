@@ -95,6 +95,11 @@ export interface IGulpSettings extends IProjectSchema {
     gulp: any;
 
     /**
+     * Additional details added to the readme, if any.
+     */
+    readmeDetails?: string;
+
+    /**
      * Package settings for gulp-shenanigans.
      */
     shenanigans: any;
