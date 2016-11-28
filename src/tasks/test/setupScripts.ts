@@ -7,10 +7,11 @@ import { Constants, IGulpSettings } from "../../definitions";
 export default function (settings: IGulpSettings): any {
     "use strict";
 
-    const tsProject: any = ts.createProject(`${Constants.folders.test}/tsconfig.json`);
-    return tsProject
+    const project: any = ts.createProject(`${Constants.folders.test}/tsconfig.json`);
+    const output: any = project
         .src()
-        .pipe(ts(tsProject))
-        .js
-        .pipe(settings.gulp.dest(Constants.folders.test));
+        .pipe(project());
+
+    return output.js
+        .pipe(settings.gulp.dest("."));
 }

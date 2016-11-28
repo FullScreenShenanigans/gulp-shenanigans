@@ -8,9 +8,10 @@ export default function taskTsc(settings: IGulpSettings): any {
     "use strict";
 
     const project: any = ts.createProject("tsconfig.json");
-    return project
+    const output: any = project
         .src()
-        .pipe(ts(project))
-        .js
+        .pipe(project());
+
+    return output.js
         .pipe(settings.gulp.dest(Constants.folders.src));
 }

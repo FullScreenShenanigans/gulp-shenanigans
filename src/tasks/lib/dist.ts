@@ -8,14 +8,13 @@ import { Constants, IGulpSettings } from "../../definitions";
 export default function (settings: IGulpSettings): void {
     "use strict";
 
-    const tsSource: any = `${Constants.folders.lib}/${settings.package.name}.ts`;
-    const tsResult: any = settings.gulp.src(tsSource)
-        .pipe(ts({
-            declaration: true
-        }));
+    const project: any = ts.createProject("tsconfig.json");
+    const source: any = `${Constants.folders.lib}/${settings.package.name}.ts`;
+    const result: any = settings.gulp.src(source)
+        .pipe(project());
 
     return merge([
-        tsResult.dts.pipe(settings.gulp.dest(Constants.folders.lib)),
-        tsResult.js.pipe(settings.gulp.dest(Constants.folders.lib))
+        result.dts.pipe(settings.gulp.dest(Constants.folders.lib)),
+        result.js.pipe(settings.gulp.dest(Constants.folders.lib))
     ]);
 }
