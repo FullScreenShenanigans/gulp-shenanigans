@@ -1,39 +1,22 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "declaration": true,
+        "module": "amd",
         "noImplicitAny": true,
         "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "outDir": "lib",
+        "strictNullChecks": true,
         "target": "es3"
     },
-    "files": [
-        "src/definitions.ts",
-        "src/main.ts",
-        "src/tasks/default.ts",
-        "src/tasks/docs.ts",
-        "src/tasks/lib.ts",
-        "src/tasks/test.ts",
-        "src/tasks/setup.ts",
-        "src/tasks/src.ts",
-        "src/tasks/watch.ts",
-        "src/tasks/web.ts",
-        "src/tasks/docs/typedoc.ts",
-        "src/tasks/lib/dist.ts",
-        "src/tasks/lib/typespace.ts",
-        "src/tasks/setup/clean.ts",
-        "src/tasks/setup/copy.ts",
-        "src/tasks/setup/package.ts",
-        "src/tasks/setup/typings.ts",
-        "src/tasks/src/tsc.ts",
-        "src/tasks/src/tslint.ts",
-        "src/tasks/test/run.ts",
-        "src/tasks/test/setupHtml.ts",
-        "src/tasks/test/setupScripts.ts",
-        "src/tasks/test/setupUtilities.ts",
-        "src/tasks/web/copy.ts",
-        "src/tasks/web/cssMin.ts",
-        "src/tasks/web/processHtml.ts",
-        "src/tasks/web/scss.ts",
-        "src/tasks/web/scssLint.ts",
-        "src/tasks/web/uglify.ts"
+    "exclude": [
+        "src/test/main.ts",
+        "src/test/utils/MochaLoader.ts"
+    ],
+    "include": [
+        "src/**/*.ts"
     ]
 }

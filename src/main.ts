@@ -1,4 +1,3 @@
-/// <reference path="../node_modules/@types/node/index.d.ts" />
 "use strict";
 
 import * as fs from "fs";
@@ -31,9 +30,11 @@ class GulpShenanigans {
             this.addTasksInGroup(group);
         }
 
-        for (const group in this.settings.taskGroups) {
-            if (this.settings.taskGroups.hasOwnProperty(group)) {
-                this.addTasksInGroup(group);
+        if (this.settings.taskGroups) {
+            for (const group in this.settings.taskGroups) {
+                if (this.settings.taskGroups[group]) {
+                    this.addTasksInGroup(group);
+                }
             }
         }
     }

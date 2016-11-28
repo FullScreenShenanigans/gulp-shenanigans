@@ -17,7 +17,7 @@ function generateScript(src: string): string {
 /**
  * Sets up for tests.
  */
-export default function taskTestSetupHtml(settings: IGulpSettings, callback: Function): any {
+export default function taskTestSetupHtml(settings: IGulpSettings): any {
     "use strict";
 
     const mustacheSettings: any = {

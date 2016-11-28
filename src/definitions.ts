@@ -1,5 +1,4 @@
-/// <reference path="../node_modules/@types/node/index.d.ts" />
-"use strict";
+import * as gulp from "gulp";
 
 /**
  * Description of an external script dependency.
@@ -81,18 +80,18 @@ export interface IProjectSchema {
      */
     taskGroups?: {
         web?: boolean;
-        [i: string]: boolean;
+        [i: string]: boolean | undefined;
     };
 }
 
 /**
- * 
+ * Project settings with runtime gulp settings added.
  */
 export interface IGulpSettings extends IProjectSchema {
     /**
      * Gulp runner for the shenanigans project.
      */
-    gulp: any;
+    gulp: gulp.Gulp;
 
     /**
      * Additional details added to the readme, if any.

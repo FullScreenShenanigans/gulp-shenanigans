@@ -37,7 +37,7 @@ function collectScriptFiles(settings: IGulpSettings): string[] {
 /**
  * Converts node-style .ts source files into a namespace-style .ts file.
  */
-export default function (settings: IGulpSettings, callback: Function): any {
+export default function (settings: IGulpSettings): any {
     "use strict";
 
     return settings.gulp

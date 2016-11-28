@@ -5,7 +5,7 @@ import { Constants, IGulpSettings } from "../../definitions";
 /**
  * Generates distribution .js files from the Typespace .ts output.
  */
-export default function (settings: IGulpSettings, callback: Function): void {
+export default function (settings: IGulpSettings): void {
     "use strict";
 
     const tsSource: any = `${Constants.folders.lib}/${settings.package.name}.ts`;

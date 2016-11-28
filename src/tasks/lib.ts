@@ -11,7 +11,7 @@ export default function (settings: IGulpSettings, callback: Function): void {
         ["lib:dist"],
     ];
 
-    if (settings.taskGroups.web) {
+    if (settings.taskGroups && settings.taskGroups.web) {
         tasks[0].push("web:processHtml", "web:copy", "web:cssMin");
         tasks.push(["web:uglify"]);
     }

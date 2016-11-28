@@ -13,6 +13,6 @@
         "target": "es3"
     },
     "include": [
-        "./**/*.ts"
+        "./src/**/*.ts"
     ]
 }

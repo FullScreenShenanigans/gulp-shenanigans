@@ -8,7 +8,7 @@ export default function (settings: IGulpSettings, callback: Function): void {
 
     const tasks: string[] = ["src:tsc", "src:tslint"];
 
-    if (settings.taskGroups.web) {
+    if (settings.taskGroups && settings.taskGroups.web) {
         tasks.push("web:scss", "web:scssLint");
     }
 

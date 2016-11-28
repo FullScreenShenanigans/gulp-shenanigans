@@ -14,7 +14,7 @@ export default function (settings: IGulpSettings): void {
         `${Constants.folders.test}/**/*.ts`,
         [`test`]);
 
-    if (settings.taskGroups.web) {
+    if (settings.taskGroups && settings.taskGroups.web) {
         settings.gulp.watch(
             [
                 `${Constants.folders.src}/*.html`,

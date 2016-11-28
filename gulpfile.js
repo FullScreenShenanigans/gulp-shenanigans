@@ -21,7 +21,7 @@ gulp.task("tsc", () => {
     const project = ts.createProject("tsconfig.json");
     const output = project
         .src()
-        .pipe(ts(project));
+        .pipe(project());
 
     return merge([
         output.dts.pipe(gulp.dest("lib")),
