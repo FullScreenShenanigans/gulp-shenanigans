@@ -59,7 +59,17 @@ export default function taskTestSetupHtml(settings: IGulpSettings, callback: Fun
 
             return true;
         })
-        .map((test: string): string => `"${test.replace(".ts", "")}"`)
+        .map((test: string): string => {
+            if (test.search(/^test/) === 0) {
+                test = test.substring("test/".length);
+            }
+
+            if (test.search(/.ts$/) === test.length - ".ts".length) {
+                test = test.substring(0, test.length - ".ts".length);
+            }
+
+            return `"${test}"`;
+        })
         .join(",\n                ")
         .trim();
 
