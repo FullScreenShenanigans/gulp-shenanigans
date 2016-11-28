@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "declaration": true,
-        "module": "amd",
+        "module": "commonjs",
         "noImplicitAny": true,
         "noImplicitReturns": true,
         "noImplicitThis": true,
