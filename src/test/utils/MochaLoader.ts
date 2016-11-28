@@ -24,11 +24,11 @@ interface ITestHierarchy {
 /**
  * Combines mocha tests into their describe() groups.
  */
-class MochaLoader {
+export class MochaLoader {
     /**
      * The underlying mocha instance.
      */
-    private mocha: any;
+    private mocha: Mocha;
 
     /**
      * Root grouping of test hierarchies.
@@ -47,15 +47,10 @@ class MochaLoader {
      * Initializes a new instance of the MochaLoader class.
      * 
      * @param mocha   The underlying mocha instance.
-     * @param require   The global require instance.
      */
-    public constructor(mocha: any, require: any) {
+    public constructor(mocha: Mocha) {
         this.mocha = mocha;
         this.mocha.setup("bdd");
-
-        require.config({
-            baseUrl: "../lib"
-        });
     }
 
     /**
@@ -73,7 +68,7 @@ class MochaLoader {
      * @param testName   The name of the test.
      * @param test   A new test.
      */
-    public addTest(testName: string, test: (done?: Function) => void): void {
+    public it(testName: string, test: (done?: Function) => void): void {
         if (!this.currentTestPath) {
             throw new Error(`No test path defined before adding test '${testName}'.`);
         }
@@ -127,5 +122,3 @@ class MochaLoader {
         }
     }
 }
-
-declare var mochaLoader: MochaLoader;

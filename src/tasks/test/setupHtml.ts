@@ -29,10 +29,9 @@ export default function taskTestSetupHtml(settings: IGulpSettings, callback: Fun
             .map((dependency: string): string => {
                 return generateScript(`../node_modules/${dependency.toLowerCase()}/lib/${dependency}`);
             })
-            .concat(generateScript(`../lib/${settings.package.name}`))
             .join("\n        ");
     } else {
-        mustacheSettings.dependencies = generateScript(`../lib/${settings.package.name}`);
+        mustacheSettings.dependencies = [];
     }
 
     if (settings.externals) {
@@ -47,16 +46,22 @@ export default function taskTestSetupHtml(settings: IGulpSettings, callback: Fun
 
     mustacheSettings.tests = JSON.parse(fs.readFileSync(`${Constants.folders.test}/tsconfig.json`).toString())
         .files
-        .filter((file: string): boolean => file.indexOf("utils/") !== 0)
-        .map((test: string): string => {
-            const testPath: string = test.replace(".ts", "");
+        .filter((file: string): boolean => {
+            // Ignore auto-added utilities
+            if (file.indexOf("utils/") === 0) {
+                return false;
+            }
 
-            return [
-                `<script type="text/javascript">mochaLoader.setTestPath("${testPath}");</script>`,
-                generateScript(testPath)
-            ].join("\n        ");
+            // Ignore the root main.js
+            if (file.indexOf("/") === -1) {
+                return false;
+            }
+
+            return true;
         })
-        .join("\n        ");
+        .map((test: string): string => `"${test.replace(".ts", "")}"`)
+        .join(",\n                ")
+        .trim();
 
     return settings.gulp.src("./node_modules/gulp-shenanigans/src/test/index.html")
         .pipe(mustache(mustacheSettings))
