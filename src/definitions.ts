@@ -127,6 +127,11 @@ export const Constants = {
      */
     folders: {
         /**
+         * Output destination for documentation.
+         */
+        docs: "docs",
+
+        /**
          * Output destination for built code.
          */
         lib: "lib",
