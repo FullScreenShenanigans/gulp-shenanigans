@@ -1,6 +1,6 @@
-const fs: any = require("fs");
-const mustache: any = require("gulp-mustache");
 import { Constants, IExternal, IGulpSettings } from "../../definitions";
+const glob: any = require("glob");
+const mustache: any = require("gulp-mustache");
 
 /**
  * Generates a <script> tag for a .js file.
@@ -11,7 +11,7 @@ import { Constants, IExternal, IGulpSettings } from "../../definitions";
 function generateScript(src: string): string {
     "use strict";
 
-    return `<script type="text/javascript" src="${src}.js"></script>`;
+    return `<script src="${src}.js"></script>`;
 }
 
 /**
@@ -44,8 +44,8 @@ export default function taskTestSetupHtml(settings: IGulpSettings, callback: Fun
         mustacheSettings.externalScripts = "<!-- (none) -->";
     }
 
-    mustacheSettings.tests = JSON.parse(fs.readFileSync(`${Constants.folders.test}/tsconfig.json`).toString())
-        .files
+    mustacheSettings.tests = glob
+        .sync(`${Constants.folders.test}/**/*.ts`)
         .filter((file: string): boolean => {
             // Ignore auto-added utilities
             if (file.indexOf("utils/") === 0) {

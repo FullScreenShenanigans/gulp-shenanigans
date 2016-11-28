@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "declaration": false,
+        "module": "amd",
+        "target": "es3"
+    },
+    "include": [
+        "./**/*.ts"
+    ]
+}
