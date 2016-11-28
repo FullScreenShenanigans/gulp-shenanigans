@@ -42,6 +42,7 @@
     "gulp-scss": "^1.4.0",
     "gulp-scss-lint": "^0.4.0",
     "gulp-tslint": "^6.0.1",
+    "gulp-typedoc": "^2.0.1",
     "gulp-typescript": "^2.13.6",
     "gulp-typespace": "^0.1.8",
     "gulp-uglify": "^2.0.0",
@@ -51,6 +52,7 @@
     "run-sequence": "^1.2.2",
     "sinon": "^1.17.4",
     "tslint": "^3.13.0",
+    "typedoc": "^0.5.1",
     "typescript": "^2.0.0",
     "typespace": "^0.1.7"
   }
