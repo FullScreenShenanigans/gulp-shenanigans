@@ -1,3 +1,5 @@
+const merge: any = require("merge2");
+const sourcemaps: any = require("gulp-sourcemaps");
 const ts: any = require("gulp-typescript");
 import { Constants, IGulpSettings } from "../../definitions";
 
@@ -10,8 +12,14 @@ export default function taskTsc(settings: IGulpSettings): any {
     const project: any = ts.createProject("tsconfig.json");
     const output: any = project
         .src()
+        .pipe(sourcemaps.init())
         .pipe(project());
 
-    return output.js
-        .pipe(settings.gulp.dest(Constants.folders.src));
+    return merge([
+        output.js
+            .pipe(sourcemaps.write())
+            .pipe(settings.gulp.dest(Constants.folders.src)),
+        output.dts
+            .pipe(settings.gulp.dest(Constants.folders.src))
+    ]);
 }

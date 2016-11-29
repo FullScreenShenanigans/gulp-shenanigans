@@ -1,6 +1,7 @@
 docs/**
 lib/**
 src/**/*.css
+src/**/*.d.ts
 src/**/*.js*
 ~src/main.js
 test/**/*.js

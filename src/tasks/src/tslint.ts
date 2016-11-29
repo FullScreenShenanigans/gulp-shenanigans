@@ -7,7 +7,11 @@ import { Constants, IGulpSettings } from "../../definitions";
 export default function taskTslint(settings: IGulpSettings): any {
     "use strict";
 
-    return settings.gulp.src([`${Constants.folders.src}/**/*.ts`])
+    return settings.gulp
+        .src([
+            `${Constants.folders.src}/**/*.ts`,
+            `!${Constants.folders.src}/**/*.d.ts`
+        ])
         .pipe(tslint({
             formatter: "verbose"
         }))
