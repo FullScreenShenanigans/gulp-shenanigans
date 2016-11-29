@@ -1,14 +1,13 @@
 {
     "compilerOptions": {
         "declaration": true,
-        "module": "commonjs",
+        "module": "amd",
         "noImplicitAny": true,
         "noImplicitReturns": true,
         "noImplicitThis": true,
         "noFallthroughCasesInSwitch": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "outDir": "lib",
         "strictNullChecks": true,
         "target": "es3"
     },
