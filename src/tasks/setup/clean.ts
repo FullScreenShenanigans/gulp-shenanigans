@@ -11,6 +11,8 @@ export default function (): any {
         `${Constants.folders.docs}/**/*`,
         `${Constants.folders.lib}/**/*`,
         `${Constants.folders.src}/**/*.js`,
-        `${Constants.folders.typings}/**/*`
+        `${Constants.folders.src}/**/*.d.ts`,
+        `${Constants.folders.test}/**/*.d.ts`,
+        `${Constants.folders.test}/**/*.js`
     ]);
 }

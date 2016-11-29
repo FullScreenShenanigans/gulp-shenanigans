@@ -155,12 +155,7 @@ export const Constants = {
         /**
          * Location of all test code.
          */
-        test: "test",
-
-        /**
-         * Location of TypeScript typings.
-         */
-        typings: "typings"
+        test: "test"
     },
 
     /**
