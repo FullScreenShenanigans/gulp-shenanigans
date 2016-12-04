@@ -5,7 +5,7 @@ const uglify: any = require("gulp-uglify");
 import { Constants, IGulpSettings } from "../../definitions";
 
 /**
- * Compiles source .ts files in-place.
+ * Compiles source .ts files to lib/.
  */
 export default function taskTsc(settings: IGulpSettings): any {
     "use strict";
