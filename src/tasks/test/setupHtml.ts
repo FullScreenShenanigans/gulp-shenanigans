@@ -27,7 +27,7 @@ export default function taskTestSetupHtml(settings: IGulpSettings): any {
     if (settings.dependencies) {
         mustacheSettings.dependencies = Object.keys(settings.dependencies)
             .map((dependency: string): string => `"${dependency}"`)
-            .join("\n,        ");
+            .join(",\n                ");
     } else {
         mustacheSettings.dependencies = "";
     }

@@ -63,8 +63,9 @@ class GulpShenanigans {
      * Generates a tasks's name from its components.
      * 
      * @param group   The task's parent group (if any).
+     * @param child   The task's child group (if any).
      */
-    private generateTaskName(group: string, child: string): string {
+    private generateTaskName(group: string, child?: string): string {
         return [group, child]
             .filter((component: string): boolean => !!component)
             .join(":");
