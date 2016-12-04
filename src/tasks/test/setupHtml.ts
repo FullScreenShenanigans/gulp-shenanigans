@@ -73,5 +73,5 @@ export default function taskTestSetupHtml(settings: IGulpSettings): any {
 
     return settings.gulp.src("./node_modules/gulp-shenanigans/src/test/index.html")
         .pipe(mustache(mustacheSettings))
-        .pipe(settings.gulp.dest(`${Constants.folders.test}`));
+        .pipe(settings.gulp.dest(Constants.folders.test));
 }

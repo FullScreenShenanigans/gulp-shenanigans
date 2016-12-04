@@ -9,7 +9,7 @@ export default function (settings: IGulpSettings, callback: Function): void {
     const tasks: string[] = ["src:tsc", "src:tslint"];
 
     if (settings.taskGroups && settings.taskGroups.web) {
-        tasks.push("web:scss", "web:scssLint");
+        tasks.push("web:scss", "web:scssLint", "web:srcHtml");
     }
 
     require("run-sequence").use(settings.gulp)(tasks, callback);
