@@ -1,4 +1,3 @@
-const debug: any = require("gulp-debug");
 const mustache: any = require("gulp-mustache");
 // const rename: any = require("gulp-rename");
 import { IGulpSettings } from "../../definitions";
@@ -21,7 +20,6 @@ export default function (settings: IGulpSettings): any {
             {
                 dot: true
             })
-        .pipe(debug())
         .pipe(mustache(settings))
         // .pipe(rename({
         //     dirname: ""

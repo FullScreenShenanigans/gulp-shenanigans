@@ -1,4 +1,3 @@
-const debug: any = require("gulp-debug");
 const rename: any = require("gulp-rename");
 const sourcemaps: any = require("gulp-sourcemaps");
 const webpack: any = require("gulp-webpack");
@@ -18,7 +17,6 @@ export default function (settings: IGulpSettings): any {
 
     return settings.gulp
         .src(sources)
-        .pipe(debug())
         .pipe(sourcemaps.init())
         .pipe(webpack({
             // entry: `${Constants.folders.lib}/${settings.package.name}.js`,
