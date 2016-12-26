@@ -18,8 +18,6 @@ export default function (settings: IGulpSettings): any {
         mustacheSettings.dependencies = "";
     }
 
-    console.log("Outputting to", Constants.folders.src);
-
     return settings.gulp
         .src(`${Constants.folders.src}/*.html`)
         .pipe(rename((path: any): void => {

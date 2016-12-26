@@ -131,6 +131,11 @@ export const Constants = {
      */
     folders: {
         /**
+         * Output destination for compiled distribution webpages.
+         */
+        dist: "dist",
+
+        /**
          * Output destination for documentation.
          */
         docs: "docs",

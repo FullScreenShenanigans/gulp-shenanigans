@@ -8,6 +8,7 @@ export default function (): any {
     "use strict";
 
     return del([
+        `${Constants.folders.dist}/**/*`,
         `${Constants.folders.docs}/**/*`,
         `${Constants.folders.lib}/**/*`,
         `${Constants.folders.src}/**/*.js`,

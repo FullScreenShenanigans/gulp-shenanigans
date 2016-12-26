@@ -1,6 +1,7 @@
-import { Constants, IExternal, IGulpSettings } from "../../definitions";
 const glob: any = require("glob");
 const mustache: any = require("gulp-mustache");
+
+import { Constants, IExternal, IGulpSettings } from "../../definitions";
 
 /**
  * Generates a <script> tag for a .js file.
