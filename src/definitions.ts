@@ -183,7 +183,7 @@ export const Constants = {
          * Folders of resources for web projects.
          */
         resources: [
-            "fonts", "sounds", "theme"
+            "sounds", "theme"
         ],
 
         /**

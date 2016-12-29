@@ -1,4 +1,4 @@
-const lint: any = require("gulp-sass");
+const lint: any = require("gulp-scss-lint");
 import { Constants, IGulpSettings } from "../../definitions";
 
 /**
