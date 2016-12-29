@@ -13,6 +13,7 @@
         "target": "es3"
     },
     "exclude": [
+        "src/setup/**/*.ts",
         "src/test/main.ts",
         "src/test/utils/MochaLoader.ts",
         "**/*.template.ts"

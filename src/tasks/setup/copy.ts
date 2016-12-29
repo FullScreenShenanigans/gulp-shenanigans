@@ -1,5 +1,4 @@
 const mustache: any = require("gulp-mustache");
-// const rename: any = require("gulp-rename");
 import { IGulpSettings } from "../../definitions";
 
 /**
@@ -8,11 +7,13 @@ import { IGulpSettings } from "../../definitions";
 export default function (settings: IGulpSettings): any {
     "use strict";
 
-    const sources: string[] = (settings.taskGroups && settings.taskGroups.web)
-        ? ["./node_modules/gulp-shenanigans/src/setup/*"]
-        : ["./node_modules/gulp-shenanigans/src/setup/**/*"];
+    const sources: string[] = [
+        "./node_modules/gulp-shenanigans/src/setup/default/**/*",
+    ];
 
-    console.log({ sources }, "from", settings);
+    if (settings.taskGroups && settings.taskGroups.web) {
+        sources.push("./node_modules/gulp-shenanigans/src/setup/web/**/*");
+    }
 
     return settings.gulp
         .src(
@@ -21,8 +22,5 @@ export default function (settings: IGulpSettings): any {
                 dot: true
             })
         .pipe(mustache(settings))
-        // .pipe(rename({
-        //     dirname: ""
-        // }))
         .pipe(settings.gulp.dest("."));
 }

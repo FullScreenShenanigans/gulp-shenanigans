@@ -79,8 +79,42 @@ export interface IProjectSchema {
      * Directories of optional tasks to include.
      */
     taskGroups?: {
-        web?: boolean;
-        [i: string]: boolean | undefined;
+        /**
+         * Settings for the web task group.
+         */
+        web?: IWebTaskGroup;
+
+        [i: string]: any | undefined;
+    };
+}
+
+/**
+ * Settings for the web task group.
+ */
+export interface IWebTaskGroup {
+    /**
+     * Public URL for the project site.
+     */
+    url: string;
+
+    /**
+     * Paragraphs of text below the game.
+     */
+    sections: {
+        /**
+         * Credits to owners and commuity contributors to the original game.
+         */
+        credits: string[];
+
+        /**
+         * Brief explanation of this project.
+         */
+        explanation: string[];
+
+        /**
+         * Legal disclosure about project ownership.
+         */
+        legal: string;
     };
 }
 
