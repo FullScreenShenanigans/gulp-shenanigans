@@ -10,7 +10,12 @@ gulp.task("clean", () => {
 });
 
 gulp.task("tslint", () => {
-    return gulp.src(["src/**/*.ts", "!src/**/*.d.ts"])
+    return gulp
+        .src([
+            "src/**/*.ts",
+            "!src/**/*.d.ts",
+            "!src/**/*"
+        ])
         .pipe(tslint({
             formatter: "verbose"
         }))

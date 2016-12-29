@@ -8,7 +8,11 @@ import { Constants, IGulpSettings } from "../../definitions";
 export default function (settings: IGulpSettings): any {
     "use strict";
 
-    return settings.gulp.src(`${Constants.folders.src}/*.html`)
+    return settings.gulp
+        .src([
+            `${Constants.folders.src}/*.html`,
+            `!${Constants.folders.src}/*.template.html`
+        ])
         .pipe(processHtml())
         .pipe(htmlmin({
             collapseBooleanAttributes: true,

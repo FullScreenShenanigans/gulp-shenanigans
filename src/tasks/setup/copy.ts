@@ -1,22 +1,26 @@
 const mustache: any = require("gulp-mustache");
-const rename: any = require("gulp-rename");
 import { IGulpSettings } from "../../definitions";
 
 /**
- * Deletes all built files.
+ * Copies resource and setup files to the src folder.
  */
 export default function (settings: IGulpSettings): any {
     "use strict";
 
+    const sources: string[] = [
+        "./node_modules/gulp-shenanigans/src/setup/default/**/*",
+    ];
+
+    if (settings.taskGroups && settings.taskGroups.web) {
+        sources.push("./node_modules/gulp-shenanigans/src/setup/web/**/*");
+    }
+
     return settings.gulp
         .src(
-            ["./node_modules/gulp-shenanigans/src/setup/*"],
+            sources,
             {
                 dot: true
             })
         .pipe(mustache(settings))
-        .pipe(rename({
-            dirname: ""
-        }))
         .pipe(settings.gulp.dest("."));
 }

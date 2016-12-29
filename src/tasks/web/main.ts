@@ -1,16 +1,13 @@
 import { Constants, IGulpSettings } from "../../definitions";
 
 /**
- * Copies resource files to the dist folder.
+ * Copies a main.js file to the dist folder.
  */
 export default function (settings: IGulpSettings): any {
     "use strict";
 
     const sources: string[] = [
-        `${Constants.folders.lib}/**/*`,
-        `!${Constants.folders.lib}/**/*.js`,
-        `!${Constants.folders.lib}/**/*.js.map`,
-        `!${Constants.folders.lib}/**/*.ts`,
+        `${Constants.folders.lib}/main.js`,
     ];
 
     return settings.gulp

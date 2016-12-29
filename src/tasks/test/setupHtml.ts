@@ -1,6 +1,7 @@
-import { Constants, IExternal, IGulpSettings } from "../../definitions";
 const glob: any = require("glob");
 const mustache: any = require("gulp-mustache");
+
+import { Constants, IExternal, IGulpSettings } from "../../definitions";
 
 /**
  * Generates a <script> tag for a .js file.
@@ -73,5 +74,5 @@ export default function taskTestSetupHtml(settings: IGulpSettings): any {
 
     return settings.gulp.src("./node_modules/gulp-shenanigans/src/test/index.html")
         .pipe(mustache(mustacheSettings))
-        .pipe(settings.gulp.dest(`${Constants.folders.test}`));
+        .pipe(settings.gulp.dest(Constants.folders.test));
 }

@@ -6,10 +6,10 @@ import { IGulpSettings } from "../definitions";
 export default function (settings: IGulpSettings, callback: Function): void {
     "use strict";
 
-    const tasks: string[] = ["lib:dist"];
+    const tasks: string[] = ["lib:tsc"];
 
     if (settings.taskGroups && settings.taskGroups.web) {
-        tasks.push("web:processHtml", "web:copy", "web:cssMin");
+        tasks.push("lib:copy", "lib:cssMin", "lib:html");
     }
 
     require("run-sequence").use(settings.gulp)(...tasks, callback);
