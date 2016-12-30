@@ -1,6 +1,6 @@
 const rename: any = require("gulp-rename");
 const sourcemaps: any = require("gulp-sourcemaps");
-const webpack: any = require("gulp-webpack");
+const webpack: any = require("webpack-stream");
 
 import { Constants, IGulpSettings } from "../../definitions";
 
