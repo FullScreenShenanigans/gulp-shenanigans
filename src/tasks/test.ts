@@ -7,8 +7,8 @@ export default function (settings: IGulpSettings, callback: Function): void {
     "use strict";
 
     const tasks: string[][] = [
-        ["test:setupHtml", "test:setupUtilities"],
-        ["test:setupScripts"],
+        ["test:html", "test:utilities"],
+        ["test:tsc"],
         ["test:run"]
     ];
 
