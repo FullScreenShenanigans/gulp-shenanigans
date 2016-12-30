@@ -123,6 +123,11 @@ export interface IWebTaskGroup {
  */
 export interface IGulpSettings extends IProjectSchema {
     /**
+     * Names of any dependencies.
+     */
+    dependencyNames: string[];
+
+    /**
      * Gulp runner for the shenanigans project.
      */
     gulp: gulp.Gulp;
