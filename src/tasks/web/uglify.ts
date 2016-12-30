@@ -1,14 +1,12 @@
 import { Constants, IGulpSettings } from "../../definitions";
 
 /**
- * Copies resource files to the dist folder.
+ * Minifies .js files in the dist folder.
  */
 export default function (settings: IGulpSettings): any {
     "use strict";
 
     const sources: string[] = [
-        ...Constants.folders.resources
-            .map((resource: string): string => `${Constants.folders.lib}/${resource}/**`),
         `${Constants.folders.lib}/*.css`,
         `${Constants.folders.lib}/main.js`
     ];

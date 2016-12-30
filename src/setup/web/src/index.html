@@ -41,46 +41,30 @@
     </section>
 
     <section id="legal" class="section-text">
-        <small><em>{{web.sections.legal}}</em></small>
+        <small><em>{{taskGroups.web.sections.legal}}</em></small>
     </section>
 
     <script data-main="main.js" src="../node_modules/requirejs/require.js" type="text/javascript"></script>
 
     <!-- build:template
-    <script src="{{package.name}}.js"></script>
+    <script>
+        requirejs.config({
+            baseUrl: "../node_modules",
+            paths: {
+                components: "../lib/components/",
+                {{package.name}}: "../lib/{{package.name}}",
+                main: "../lib/main",
+                settings: "../lib/settings/"
+            }
+        });
+    </script>
     /build -->
     <!-- build:remove -->
     <script>
         var dependencies = [
-            "AreaSpawnr",
-            "AudioPlayr",
-            "BattleMovr",
-            "ChangeLinr",
-            "DeviceLayr",
-            "EightBittr",
-            "FPSAnalyzr",
-            "GamesRunnr",
-            "GameStartr",
-            "GroupHoldr",
-            "InputWritr",
-            "ItemsHoldr",
-            "MapsCreatr",
-            "MapScreenr",
-            "MenuGraphr",
-            "ModAttachr",
-            "NumberMakr",
-            "ObjectMakr",
-            "PixelDrawr",
-            "PixelRendr",
-            "QuadsKeepr",
-            "ScenePlayr",
-            "StateHoldr",
-            "StringFilr",
-            "ThingHittr",
-            "TimeHandlr",
-            "TouchPassr",
-            "UserWrappr",
-            "WorldSeedr"
+            {{#dependencyNames}}
+            "{{.}}",
+            {{/dependencyNames}}
         ];
 
         var config = {

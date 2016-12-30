@@ -6,7 +6,7 @@ import { IGulpSettings } from "../definitions";
 export default function (settings: IGulpSettings, callback: Function): void {
     "use strict";
 
-    const tasks: string[] = ["web:copy", "web:main", "web:webpack"];
+    const tasks: string[] = ["web:copy", "web:html", "web:main", "web:webpack"];
 
     require("run-sequence").use(settings.gulp)(...tasks, callback);
 }

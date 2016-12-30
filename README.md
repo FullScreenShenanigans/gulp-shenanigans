@@ -55,9 +55,9 @@ Compiles source files into the `/lib` folder.
 
 Creates test runners and runs them in the `/test` folder.
 
-* **`test:setupHtml`** - Creates an `index.html` that can run tests.
-* **`test:setupUtilities`** - Copies configuration and utility files into the project directory.
-* **`test:setupScripts`** - Compiles test .ts files in-place.
+* **`test:html`** - Creates an `index.html` that can run tests.
+* **`test:utilities`** - Copies configuration and utility files into the project directory.
+* **`test:tsc`** - Compiles test .ts files in-place.
 * **`test:run`** - Runs tests.
 
 ### `docs`
