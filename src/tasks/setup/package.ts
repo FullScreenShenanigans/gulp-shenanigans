@@ -12,6 +12,7 @@ export default function taskClean(settings: IGulpSettings): any {
 
     let dependencies: any;
     const devDependencies: any = {
+        "gulp": "3.9.X",
         "gulp-shenanigans": `^${settings.shenanigans.version}`
     };
 
