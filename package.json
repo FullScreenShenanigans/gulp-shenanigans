@@ -59,5 +59,9 @@
   "devDependencies": {
     "@types/gulp": "^3.8.32",
     "@types/node": "^6.0.54"
+  },
+  "scripts": {
+    "gulp": "gulp",
+    "test": "gulp test"
   }
 }
