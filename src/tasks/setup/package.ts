@@ -12,6 +12,7 @@ export default function taskClean(settings: IGulpSettings): any {
 
     let dependencies: any;
     const devDependencies: any = {
+        "gulp": `${settings.shenanigans.dependencies.gulp}`,
         "gulp-shenanigans": `^${settings.shenanigans.version}`
     };
 
@@ -66,6 +67,11 @@ export default function taskClean(settings: IGulpSettings): any {
     }
 
     packageInfo.devDependencies = devDependencies;
+
+    packageInfo.scripts = {
+        "gulp": "gulp",
+        "test": "gulp test"
+    };
 
     return file("package.json", JSON.stringify(packageInfo), { src: true })
         .pipe(prettify({
