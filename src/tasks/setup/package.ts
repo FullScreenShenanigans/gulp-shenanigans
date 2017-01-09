@@ -68,6 +68,11 @@ export default function taskClean(settings: IGulpSettings): any {
 
     packageInfo.devDependencies = devDependencies;
 
+    packageInfo.scripts = {
+        "gulp": "gulp",
+        "test": "gulp test"
+    };
+
     return file("package.json", JSON.stringify(packageInfo), { src: true })
         .pipe(prettify({
             indent_level: 2,
