@@ -72,7 +72,7 @@
         };
 
         for (var i = 0; i < dependencies.length; i += 1) {
-            config.paths[dependencies[i].toLowerCase() + "/lib"] = "../node_modules/" + dependencies[i] + "/src";
+            config.paths[dependencies[i].toLowerCase() + "/lib"] = "../node_modules/" + dependencies[i].toLowerCase() + "/src";
         }
 
         requirejs.config(config);
