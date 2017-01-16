@@ -11,7 +11,7 @@ Updates can be brought in using `npm update`.
 
 ### `shenanigans.json`
 
-gulp-shenangigans is configured a project's `shenanigans.json`.
+gulp-shenanigans is configured a project's `shenanigans.json`.
 The settings match the `IProjectSchema` interface in [src/definitions.ts](src/definitions.ts).
 
 
