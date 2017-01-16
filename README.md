@@ -15,11 +15,19 @@ gulp-shenangigans is configured a project's `shenanigans.json`.
 The settings match the `IProjectSchema` interface in [src/definitions.ts](src/definitions.ts).
 
 
-## Common Tasks
+### Running TypeScript
 
-When working on a TypeScript project, use `gulp src:tsc` to just run the TypeScript compiler.
-Use `gulp watch` to trigger that whenever a file changes.
+It's often faster to use the TypeScript compiler directly instead of the Gulp tasks.
 
+```cmd
+tsc
+```
+
+Use the `-w` flag to trigger incremental compilation whenever a file changes.
+
+```cmd
+tsc -w
+```
 
 ## Tasks in Detail
 
