@@ -103,10 +103,3 @@ export function initialize(gulp: any): void {
 
     new GulpShenanigans(settings).initializeTasks();
 };
-
-// For CLI usage
-if (process.argv.indexOf("--init") !== -1) {
-    fs.createReadStream(`${__dirname}/../src/setup/gulpfile.js`)
-        .pipe(fs.createWriteStream("./gulpfile.js"));
-    console.log("Created gulpfile.js");
-}
