@@ -7,5 +7,5 @@ debug.log
 # Built files
 lib/**
 src/**/*.js
-src/setup/**/*
+!src/setup/**/*
 !gulpfile.js
