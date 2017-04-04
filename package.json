@@ -52,6 +52,7 @@
     "lolex": "^1.6.0",
     "merge2": "^1.0.2",
     "mocha": "^3.2.0",
+    "mustache": "^2.3.0",
     "requirejs": "^2.3.2",
     "run-sequence": "^1.2.2",
     "sinon": "^1.17.7",
@@ -63,7 +64,8 @@
   },
   "devDependencies": {
     "@types/gulp": "^3.8.32",
-    "@types/node": "^6.0.54"
+    "@types/mustache": "^0.8.29",
+    "@types/node": "^6.0.68"
   },
   "scripts": {
     "gulp": "gulp",

@@ -81,10 +81,8 @@ export function initialize(gulp: any): void {
     "use strict";
 
     const settings: IGulpSettings = JSON.parse(fs.readFileSync("./shenanigans.json").toString());
-    const readmePath: string = "src/docs/README.md";
 
     settings.gulp = gulp;
-    settings.readmeDetails = fs.existsSync(readmePath) ? fs.readFileSync(readmePath).toString() : undefined;
     settings.shenanigans = JSON.parse(fs.readFileSync(`${__dirname}/../package.json`).toString());
 
     if (!settings.node_modules) {
