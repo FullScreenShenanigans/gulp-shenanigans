@@ -1,6 +1,3 @@
-const glob: any = require("glob");
-const mustache: any = require("gulp-mustache");
-
 import { Constants, IExternal, IGulpSettings } from "../../definitions";
 
 /**
@@ -20,6 +17,9 @@ function generateScript(src: string): string {
  */
 export default function taskTestSetupHtml(settings: IGulpSettings): any {
     "use strict";
+
+    const glob = require("glob");
+    const mustache = require("gulp-mustache");
 
     const mustacheSettings: any = {
         package: settings.package

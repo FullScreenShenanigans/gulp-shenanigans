@@ -1,4 +1,3 @@
-const lint: any = require("gulp-sass-lint");
 import { Constants, IGulpSettings } from "../../definitions";
 
 /**
@@ -6,6 +5,8 @@ import { Constants, IGulpSettings } from "../../definitions";
  */
 export default function (settings: IGulpSettings): any {
     "use strict";
+
+    const lint = require("gulp-sass-lint");
 
     return settings.gulp.src(`${Constants.folders.src}/*.scss`)
         .pipe(lint());

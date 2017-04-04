@@ -1,4 +1,3 @@
-const cssMin: any = require("gulp-clean-css");
 import { Constants, IGulpSettings } from "../../definitions";
 
 /**
@@ -6,6 +5,8 @@ import { Constants, IGulpSettings } from "../../definitions";
  */
 export default function (settings: IGulpSettings): any {
     "use strict";
+
+    const cssMin = require("gulp-clean-css");
 
     return settings.gulp.src(`${Constants.folders.src}/*.css`)
         .pipe(cssMin({

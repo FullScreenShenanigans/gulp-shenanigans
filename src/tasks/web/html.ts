@@ -1,4 +1,3 @@
-const change: any = require("gulp-change");
 import { Constants, IGulpSettings } from "../../definitions";
 
 /**
@@ -19,6 +18,8 @@ function removeRequireRedirects(contents: string): string {
  */
 export default function (settings: IGulpSettings): any {
     "use strict";
+
+    const change = require("gulp-change");
 
     const sources: string[] = [
         `${Constants.folders.lib}/index.html`

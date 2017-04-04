@@ -1,4 +1,3 @@
-const del: any = require("del");
 import { Constants } from "../../definitions";
 
 /**
@@ -6,6 +5,8 @@ import { Constants } from "../../definitions";
  */
 export default function (): any {
     "use strict";
+
+    const del = require("del");
 
     return del([
         `${Constants.folders.dist}/**/*`,

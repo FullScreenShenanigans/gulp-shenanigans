@@ -1,4 +1,3 @@
-const scss: any = require("gulp-sass");
 import { Constants, IGulpSettings } from "../../definitions";
 
 /**
@@ -6,6 +5,8 @@ import { Constants, IGulpSettings } from "../../definitions";
  */
 export default function (settings: IGulpSettings): any {
     "use strict";
+
+    const scss = require("gulp-sass");
 
     return settings.gulp.src(`${Constants.folders.src}/*.scss`)
         .pipe(scss().on("error", scss.logError))
