@@ -1,7 +1,3 @@
-const file: any = require("gulp-file");
-const insert: any = require("gulp-insert");
-const prettify: any = require("gulp-jsbeautifier");
-const replace: any = require("gulp-replace");
 import { IGulpSettings } from "../../definitions";
 
 /**
@@ -9,6 +5,11 @@ import { IGulpSettings } from "../../definitions";
  */
 export default function taskClean(settings: IGulpSettings): any {
     "use strict";
+
+    const file = require("gulp-file");
+    const insert = require("gulp-insert");
+    const prettify = require("gulp-jsbeautifier");
+    const replace = require("gulp-replace");
 
     let dependencies: any;
     const devDependencies: any = {

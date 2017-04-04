@@ -1,11 +1,12 @@
 import { Constants, IGulpSettings } from "../../definitions";
-const typedoc: any = require("gulp-typedoc");
 
 /**
  * Creates documentation files using TypeDoc.
  */
 export default function (settings: IGulpSettings): any {
     "use strict";
+
+    const typedoc = require("gulp-typedoc");
 
     return settings.gulp
         .src([`${Constants.folders.src}/**/*.ts`])

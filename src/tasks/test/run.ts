@@ -1,4 +1,3 @@
-const mochaPhantomJS: any = require("gulp-mocha-phantomjs");
 import { Constants, IGulpSettings } from "../../definitions";
 
 /**
@@ -6,6 +5,8 @@ import { Constants, IGulpSettings } from "../../definitions";
  */
 export default function taskTestRun(settings: IGulpSettings): any {
     "use strict";
+
+    const mochaPhantomJS = require("gulp-mocha-phantomjs");
 
     return settings.gulp.src(`${Constants.folders.test}/index.html`)
         .pipe(mochaPhantomJS({

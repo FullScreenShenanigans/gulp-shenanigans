@@ -1,4 +1,3 @@
-const tslint: any = require("gulp-tslint");
 import { Constants, IGulpSettings } from "../../definitions";
 
 /**
@@ -6,6 +5,8 @@ import { Constants, IGulpSettings } from "../../definitions";
  */
 export default function taskTslint(settings: IGulpSettings): any {
     "use strict";
+
+    const tslint = require("gulp-tslint");
 
     return settings.gulp
         .src([

@@ -1,8 +1,3 @@
-const rename: any = require("gulp-rename");
-const sourcemaps: any = require("gulp-sourcemaps");
-const uglify: any = require("gulp-uglify");
-const webpack: any = require("webpack-stream");
-
 import { Constants, IGulpSettings } from "../../definitions";
 
 /**
@@ -10,6 +5,11 @@ import { Constants, IGulpSettings } from "../../definitions";
  */
 export default function (settings: IGulpSettings): any {
     "use strict";
+
+    const rename = require("gulp-rename");
+    const sourcemaps = require("gulp-sourcemaps");
+    const uglify = require("gulp-uglify");
+    const webpack = require("webpack-stream");
 
     const sources: string[] = [
         `${Constants.folders.src}/**/*.js`,

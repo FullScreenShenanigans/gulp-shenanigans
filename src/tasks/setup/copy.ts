@@ -1,4 +1,3 @@
-const mustache: any = require("gulp-mustache");
 import { IGulpSettings } from "../../definitions";
 
 /**
@@ -6,6 +5,8 @@ import { IGulpSettings } from "../../definitions";
  */
 export default function (settings: IGulpSettings): any {
     "use strict";
+
+    const mustache = require("gulp-mustache");
 
     const sources: string[] = [
         "./node_modules/gulp-shenanigans/src/setup/default/**/*",

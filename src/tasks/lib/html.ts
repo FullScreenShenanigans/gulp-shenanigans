@@ -1,5 +1,3 @@
-const htmlmin: any = require("gulp-htmlmin");
-const processHtml: any = require("gulp-processhtml");
 import { Constants, IGulpSettings } from "../../definitions";
 
 /**
@@ -7,6 +5,9 @@ import { Constants, IGulpSettings } from "../../definitions";
  */
 export default function (settings: IGulpSettings): any {
     "use strict";
+
+    const htmlmin = require("gulp-htmlmin");
+    const processHtml = require("gulp-processhtml");
 
     return settings.gulp
         .src([
