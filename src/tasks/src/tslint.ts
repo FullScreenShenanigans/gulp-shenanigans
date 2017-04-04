@@ -6,15 +6,19 @@ import { Constants, IGulpSettings } from "../../definitions";
 export default function taskTslint(settings: IGulpSettings): any {
     "use strict";
 
-    const tslint = require("gulp-tslint");
+    const gulpTslint = require("gulp-tslint");
+    const tslint = require("tslint");
+
+    const program = tslint.Linter.createProgram(Constants.files.src.tsconfig);
 
     return settings.gulp
         .src([
             `${Constants.folders.src}/**/*.ts`,
             `!${Constants.folders.src}/**/*.d.ts`
         ])
-        .pipe(tslint({
-            formatter: "verbose"
+        .pipe(gulpTslint({
+            formatter: "verbose",
+            program
         }))
-        .pipe(tslint.report());
+        .pipe(gulpTslint.report());
 }

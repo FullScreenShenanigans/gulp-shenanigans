@@ -167,7 +167,27 @@ export const Constants = {
         /**
          * Main package README.md.
          */
-        readme: "README.md"
+        readme: "README.md",
+
+        /**
+         * Files relevant to src.
+         */
+        src: {
+            /**
+             * src's tsconfig.json.
+             */
+            tsconfig: "tsconfig.json"
+        },
+
+        /**
+         * Files relevant to test.
+         */
+        test: {
+            /**
+             * test's tsconfig.json.
+             */
+            tsconfig: "tsconfig.json"
+        }
     },
 
     /**
