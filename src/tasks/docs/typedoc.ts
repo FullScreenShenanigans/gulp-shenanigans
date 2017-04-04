@@ -8,14 +8,16 @@ export default function (settings: IGulpSettings): any {
 
     const typedoc = require("gulp-typedoc");
 
+    const output = `${Constants.folders.docs}/generated`;
+
     return settings.gulp
         .src([`${Constants.folders.src}/**/*.ts`])
         .pipe(typedoc({
             ignoreCompilerErrors: true,
             module: "commonjs",
             name: settings.package.name,
-            out: "./docs",
+            out: output,
             target: "es5"
         }))
-        .pipe(settings.gulp.dest("."));
+        .pipe(settings.gulp.dest(output));
 }
