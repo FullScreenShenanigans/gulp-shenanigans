@@ -12,10 +12,14 @@ export default function taskTslint(settings: IGulpSettings): any {
     const program = tslint.Linter.createProgram(Constants.files.src.tsconfig);
 
     return settings.gulp
-        .src([
-            `${Constants.folders.src}/**/*.ts`,
-            `!${Constants.folders.src}/**/*.d.ts`
-        ])
+        .src(
+            [
+                `${Constants.folders.src}/**/*.ts`,
+                `!${Constants.folders.src}/**/*.d.ts`
+            ],
+            {
+                base: "."
+            })
         .pipe(gulpTslint({
             formatter: "verbose",
             program
