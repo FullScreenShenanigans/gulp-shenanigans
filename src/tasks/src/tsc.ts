@@ -10,7 +10,7 @@ export default function taskTsc(settings: IGulpSettings): any {
     const sourcemaps = require("gulp-sourcemaps");
     const ts = require("gulp-typescript");
 
-    const project: any = ts.createProject("tsconfig.json");
+    const project: any = ts.createProject(Constants.files.src.tsconfig);
     const output: any = project
         .src()
         .pipe(sourcemaps.init())

@@ -8,7 +8,7 @@ export default function (settings: IGulpSettings): any {
 
     const ts = require("gulp-typescript");
 
-    const project: any = ts.createProject(`${Constants.folders.test}/tsconfig.json`);
+    const project: any = ts.createProject(Constants.files.src.tsconfig);
     const output: any = project
         .src()
         .pipe(project());
