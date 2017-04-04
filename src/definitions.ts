@@ -133,11 +133,6 @@ export interface IGulpSettings extends IProjectSchema {
     gulp: gulp.Gulp;
 
     /**
-     * Additional details added to the readme, if any.
-     */
-    readmeDetails?: string;
-
-    /**
      * Package settings for gulp-shenanigans.
      */
     shenanigans: any;
@@ -164,6 +159,16 @@ export const Constants = {
      * Default task groups to run.
      */
     defaultTaskGroups: ["docs", "lib", "setup", "src", "test"],
+
+    /**
+     * Locations of package files.
+     */
+    files: {
+        /**
+         * Main package README.md.
+         */
+        readme: "README.md"
+    },
 
     /**
      * Locations of package folders.
