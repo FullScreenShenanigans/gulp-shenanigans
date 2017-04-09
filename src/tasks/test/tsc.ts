@@ -1,4 +1,5 @@
 import { Constants, IGulpSettings } from "../../definitions";
+import { projectFactory } from "../../projectFactory";
 
 /**
  * Compiles test .ts files to .js in-place.
@@ -6,13 +7,11 @@ import { Constants, IGulpSettings } from "../../definitions";
 export default function (settings: IGulpSettings): any {
     "use strict";
 
-    const ts = require("gulp-typescript");
-
-    const project: any = ts.createProject(Constants.files.src.tsconfig);
+    const project: any = projectFactory(Constants.files.src.tsconfig);
     const output: any = project
         .src()
         .pipe(project());
 
     return output.js
-        .pipe(settings.gulp.dest("."));
+        .pipe(settings.gulp.dest(Constants.folders.test));
 }
