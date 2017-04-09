@@ -1,4 +1,5 @@
 # gulp-shenanigans
+[![Build Status](https://travis-ci.org/FullScreenShenanigans/gulp-shenanigans.svg?branch=master)](https://travis-ci.org/FullScreenShenanigans/gulp-shenanigans)
 [![NPM version](https://badge.fury.io/js/gulp-shenanigans.svg)](http://badge.fury.io/js/gulp-shenanigans)
 
 Unified Gulp tasks for FullScreenShenanigans projects.
