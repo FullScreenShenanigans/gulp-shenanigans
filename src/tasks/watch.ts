@@ -1,16 +1,19 @@
 import { Constants, IGulpSettings } from "../definitions";
 
 /**
- * Runs the default task whenever a source file changes.
+ * Runs the corresponding build tasks whenever source files change.
  */
 export default function (settings: IGulpSettings): void {
     "use strict";
 
     settings.gulp.watch(
-        `${Constants.folders.src}/**/*.ts`,
+        [
+            `${Constants.folders.src}/**/*.ts`,
+            `!${Constants.folders.src}/**/*.d.ts`
+        ],
         ["src:tsc"]);
 
     settings.gulp.watch(
         `${Constants.folders.test}/**/*.ts`,
-        [`test`]);
+        [`test:tsc`]);
 }

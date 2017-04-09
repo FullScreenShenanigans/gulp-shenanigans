@@ -1,4 +1,5 @@
 import { Constants, IGulpSettings } from "../../definitions";
+import { projectFactory } from "../../projectFactory";
 
 /**
  * Compiles source .ts files to lib/.
@@ -8,10 +9,9 @@ export default function taskTsc(settings: IGulpSettings): any {
 
     const merge = require("merge2");
     const sourcemaps = require("gulp-sourcemaps");
-    const ts = require("gulp-typescript");
     const uglify = require("gulp-uglify");
 
-    const project: any = ts.createProject(Constants.files.src.tsconfig);
+    const project: any = projectFactory(Constants.files.src.tsconfig);
     const output: any = project
         .src()
         .pipe(sourcemaps.init())
