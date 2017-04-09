@@ -1,9 +1,4 @@
-var del = require("del");
 var gulp = require("gulp");
-var merge = require("merge2");
-var runSequence = require("run-sequence").use(gulp);
-var ts = require("gulp-typescript");
-var tslint = require("gulp-tslint");
 
 var createTsProject = (function () {
     var projects = {};
@@ -16,22 +11,35 @@ var createTsProject = (function () {
 })();
 
 gulp.task("clean", function () {
+    var del = require("del");
+
     return del("lib/**/*");
 });
 
 gulp.task("tslint", function () {
+    var gulpTslint = require("gulp-tslint");
+    var tslint = require("tslint");
+
+    var program = tslint.Linter.createProgram("./tsconfig.json");
+
     return gulp
-        .src([
-            "src/**/*.ts",
-            "!src/**/*.d.ts"
-        ])
-        .pipe(tslint({
-            formatter: "verbose"
-        }))
-        .pipe(tslint.report());
+        .src(
+            [
+                "src/**/*.ts",
+                "!src/**/*.d.ts",
+                "!**/*.template.*",
+                "!src/test/**/*.ts",
+                "!src/setup/**/*.ts"
+            ],
+            {
+                base: "."
+            })
+        .pipe(gulpTslint({ program }));
 });
 
 gulp.task("tsc", function () {
+    var merge = require("merge2");
+
     var project = createTsProject("tsconfig.json");
     var output = project
         .src()
@@ -48,6 +56,8 @@ gulp.task("watch", ["tsc"], function () {
 });
 
 gulp.task("default", function (callback) {
+    var runSequence = require("run-sequence").use(gulp);
+
     runSequence(
         ["clean", "tslint"],
         ["tsc"],

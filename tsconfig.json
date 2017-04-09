@@ -14,8 +14,8 @@
     },
     "exclude": [
         "src/setup/**/*.ts",
-        "src/test/main.ts",
-        "src/test/utils/MochaLoader.ts",
+        "src/test/**/*.ts",
+        "src/setup/**/*.ts",
         "**/*.template.ts"
     ],
     "include": [
