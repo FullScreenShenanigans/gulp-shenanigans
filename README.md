@@ -16,19 +16,13 @@ gulp-shenanigans is configured a project's `shenanigans.json`.
 The settings match the `IProjectSchema` interface in [src/definitions.ts](src/definitions.ts).
 
 
-### Running TypeScript
+### Builds
 
-It's often faster to use the TypeScript compiler directly instead of the Gulp tasks.
+`gulp` by default completely re-builds the project.
+You should have run this once after cloning the project.
 
-```cmd
-tsc
-```
-
-Use the `-w` flag to trigger incremental compilation whenever a file changes.
-
-```cmd
-tsc -w
-```
+Use `gulp src` to rebuild source files under `/src` and `gulp test` to rebuild source files under `/test`.
+You can also use `gulp watch` to incrementally build both.
 
 ## Tasks in Detail
 
