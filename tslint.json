@@ -1,10 +1,10 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:recommended"
-    ],
+    "extends": "tslint:all",
     "rules": {
-        "object-literal-key-quotes": [false],
-        "trailing-comma": [false]
+        "linebreak-style": [false],
+        "no-unused-variable": [false],
+        "space-before-function-paren": [false],
+        "typedef": [false],
+        "variable-name": [false]
     }
 }
