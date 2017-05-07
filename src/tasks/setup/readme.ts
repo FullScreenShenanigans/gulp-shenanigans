@@ -12,10 +12,6 @@ function replaceBetween(readmeContents: string, section: string, settings: IGulp
     const end = readmeContents.indexOf(ender);
     const addingWeb: boolean = !!(settings.taskGroups && settings.taskGroups.web);
 
-    console.log("--start--");
-    console.log(readmeContents.substring(0, start));
-    console.log("----");
-
     return [
         readmeContents.substring(0, start),
         mustache.render(
