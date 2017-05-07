@@ -11,11 +11,17 @@ export default function (settings: IGulpSettings): any {
     const sources: string[] = [
         "./node_modules/gulp-shenanigans/src/setup/default/**/*",
     ];
-    let buildCommands = ["gulp"];
+    const buildCommands = ["gulp"];
 
-    if (settings.taskGroups && settings.taskGroups.web) {
-        sources.push("./node_modules/gulp-shenanigans/src/setup/web/**/*");
-        buildCommands.unshift("gulp setup");
+    if (settings.taskGroups) {
+        if (settings.taskGroups.web) {
+            sources.push("./node_modules/gulp-shenanigans/src/setup/web/**/*");
+            buildCommands.unshift("gulp setup");
+        }
+
+        if (settings.taskGroups.games) {
+            sources.push("./node_modules/gulp-shenanigans/src/setup/games/**/*");
+        }
     }
 
     return settings.gulp

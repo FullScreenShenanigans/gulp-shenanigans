@@ -70,13 +70,24 @@ export class MochaLoader {
      * @param test   A new test.
      */
     public it(testName: string, test: (done: Function) => void): void {
+        this.under([], testName, test);
+    }
+
+    /**
+     * Adds a new test under a custom test path.
+     * 
+     * @param path   Extra path after the current test path.
+     * @param testName   The name of the test.
+     * @param test   A new test.
+     */
+    public under(path: string[], testName: string, test: (done: Function) => void): void {
         if (!this.currentTestPath) {
             throw new Error(`No test path defined before adding test '${testName}'.`);
         }
 
         let testHierarchy: ITestHierarchy = this.testHierarchy;
 
-        for (const part of this.currentTestPath) {
+        for (const part of [...this.currentTestPath, ...path]) {
             if (!testHierarchy.children[part]) {
                 testHierarchy = testHierarchy.children[part] = {
                     children: {},
