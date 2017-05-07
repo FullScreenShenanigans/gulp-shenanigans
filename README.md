@@ -24,6 +24,10 @@ You should have run this once after cloning the project.
 Use `gulp src` to rebuild source files under `/src` and `gulp test` to rebuild source files under `/test`.
 You can also use `gulp watch` to incrementally build both.
 
+Some projects have extra groups of tasks included.
+* `web` groups are for projects that generate `.html` pages as output, such as games.
+* `games` groups are for projects that subclass GameStartr.
+
 ## Tasks in Detail
 
 ### `default`

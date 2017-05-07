@@ -80,6 +80,11 @@ export interface IProjectSchema {
      */
     taskGroups?: {
         /**
+         * Whether to include the games task group.
+         */
+        games?: true;
+
+        /**
          * Settings for the web task group.
          */
         web?: IWebTaskGroup;

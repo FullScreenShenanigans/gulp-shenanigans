@@ -12,5 +12,9 @@ export default function (settings: IGulpSettings, callback: Function): void {
         ["test:run"]
     ];
 
+    if (settings.taskGroups && settings.taskGroups.games) {
+        tasks.push(["test:games"]);
+    }
+
     require("run-sequence").use(settings.gulp)(...tasks, callback);
 }
