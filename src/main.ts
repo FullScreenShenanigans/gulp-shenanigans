@@ -100,4 +100,4 @@ export function initialize(gulp: any): void {
     settings.dependencyNames = Object.keys(settings.dependencies || {});
 
     new GulpShenanigans(settings).initializeTasks();
-};
+}

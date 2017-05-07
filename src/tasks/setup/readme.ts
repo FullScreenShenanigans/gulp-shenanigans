@@ -32,7 +32,7 @@ function replaceBetween(readmeContents: string, section: string, settings: IGulp
 /**
  * Fills out standard details in README.md.
  */
-export default function (settings: IGulpSettings): void {
+export default function (settings: IGulpSettings, callback: Function): void {
     "use strict";
 
     const fs = require("fs");
@@ -46,4 +46,6 @@ export default function (settings: IGulpSettings): void {
     readmeContents = replaceBetween(readmeContents, "Top", settings);
 
     fs.writeFileSync(location, readmeContents);
+
+    callback();
 }
