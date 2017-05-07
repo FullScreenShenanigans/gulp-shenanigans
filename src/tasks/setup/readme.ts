@@ -10,11 +10,14 @@ function replaceBetween(readmeContents: string, section: string, settings: IGulp
 
     const start = readmeContents.indexOf(starter) + starter.length;
     const end = readmeContents.indexOf(ender);
-    let addingWeb: boolean = !!(settings.taskGroups && settings.taskGroups.web);
+    const addingWeb: boolean = !!(settings.taskGroups && settings.taskGroups.web);
+
+    console.log("--start--");
+    console.log(readmeContents.substring(0, start));
+    console.log("----");
 
     return [
         readmeContents.substring(0, start),
-        os.EOL,
         mustache.render(
             fs.readFileSync(`./node_modules/gulp-shenanigans/src/setup/readme/${section}.md`).toString().trim(),
             {
@@ -27,7 +30,7 @@ function replaceBetween(readmeContents: string, section: string, settings: IGulp
                     : ""
             }),
         readmeContents.substring(end)
-    ].join("");
+    ].join(os.EOL);
 }
 
 /**
