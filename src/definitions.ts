@@ -191,7 +191,7 @@ export const Constants = {
             /**
              * test's tsconfig.json.
              */
-            tsconfig: "tsconfig.json"
+            tsconfig: "test/tsconfig.json"
         }
     },
 
