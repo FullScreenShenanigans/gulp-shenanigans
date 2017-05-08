@@ -7,8 +7,9 @@ import { projectFactory } from "../../projectFactory";
 export default function (settings: IGulpSettings): any {
     "use strict";
 
-    const project: any = projectFactory(Constants.files.src.tsconfig);
-    const output: any = settings.gulp.src(Constants.folders.test + "/**/*.ts")
+    const project: any = projectFactory(Constants.files.test.tsconfig);
+    const output: any = project
+        .src()
         .pipe(project());
 
     return output.js
