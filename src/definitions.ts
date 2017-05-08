@@ -210,6 +210,11 @@ export const Constants = {
         docs: "docs",
 
         /**
+         * Output destination for generated documentation within docs.
+         */
+        docsGenerated: "generated",
+
+        /**
          * Output destination for built code.
          */
         lib: "lib",

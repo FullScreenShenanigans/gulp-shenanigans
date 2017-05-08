@@ -10,7 +10,7 @@ export default function (): any {
 
     return del([
         `${Constants.folders.dist}/**/*`,
-        `${Constants.folders.docs}/**/*`,
+        `${Constants.folders.docs}/${Constants.folders.docsGenerated}/**/*`,
         `${Constants.folders.lib}/**/*`,
         `${Constants.folders.src}/**/*.js`,
         `${Constants.folders.src}/**/*.d.ts`,
