@@ -22,7 +22,7 @@ function replaceBetween(readmeContents: string, section: string, settings: IGulp
                     ? ["gulp setup", "gulp"]
                     : ["gulp"],
                 extra: addingWeb
-                    ? "You can then open `src/index.html` to play."
+                    ? "After setting up and building locally, you open `src/index.html` to launch."
                     : ""
             }),
         readmeContents.substring(end)
@@ -42,8 +42,8 @@ export default function (settings: IGulpSettings, callback: Function): void {
         ? fs.readFileSync(location).toString()
         : fs.readFileSync("./node_modules/gulp-shenanigans/src/setup/readme/README.md").toString();
 
-    readmeContents = replaceBetween(readmeContents, "Builds", settings);
     readmeContents = replaceBetween(readmeContents, "Top", settings);
+    readmeContents = replaceBetween(readmeContents, "Development", settings);
 
     fs.writeFileSync(location, readmeContents);
 

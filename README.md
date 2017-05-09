@@ -12,7 +12,7 @@ Updates can be brought in using `npm update`.
 
 ### `shenanigans.json`
 
-gulp-shenanigans is configured a project's `shenanigans.json`.
+gulp-shenanigans is configured by a project's `shenanigans.json`.
 The settings match the `IProjectSchema` interface in [src/definitions.ts](src/definitions.ts).
 
 
@@ -24,7 +24,7 @@ You should have run this once after cloning the project.
 Use `gulp src` to rebuild source files under `/src` and `gulp test` to rebuild source files under `/test`.
 You can also use `gulp watch` to incrementally build both.
 
-Some projects have extra groups of tasks included.
+Some projects have extra groups of tasks specified in their `shenanigans.json`.
 * `web` groups are for projects that generate `.html` pages as output, such as games.
 * `games` groups are for projects that subclass GameStartr.
 
@@ -62,13 +62,13 @@ Compiles source files into the `/lib` folder.
 
 Creates test runners and runs them in the `/test` folder.
 
-* **`test:html`** - Creates an `index.html` that can run tests.
+* **`test:html`** - Creates a `/test/index.html` that can run tests.
 * **`test:utilities`** - Copies configuration and utility files into the project directory.
 * **`test:tsc`** - Compiles test .ts files in-place.
 * **`test:run`** - Runs tests.
 
 ### `docs`
 
-Generates HTML documentation under `docs/` based on source file comments.
+Generates HTML documentation under `/docs/generated` based on source file comments.
 
-* `docs:typedoc`
+* **`docs:typedoc`**
