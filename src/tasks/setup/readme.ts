@@ -22,7 +22,7 @@ function replaceBetween(readmeContents: string, section: string, settings: IGulp
                     ? ["gulp setup", "gulp"]
                     : ["gulp"],
                 extra: addingWeb
-                    ? "After setting up and building locally, you open `src/index.html` to launch."
+                    ? "After setting up and building locally, open `src/index.html` to launch."
                     : ""
             }),
         readmeContents.substring(end)
