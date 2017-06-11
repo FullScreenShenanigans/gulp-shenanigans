@@ -15,5 +15,5 @@ export default function (settings: IGulpSettings): void {
 
     settings.gulp.watch(
         `${Constants.folders.test}/**/*.ts`,
-        [`test:tsc`]);
+        ["test:tsc"]);
 }

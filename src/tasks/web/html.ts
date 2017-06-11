@@ -2,7 +2,7 @@ import { Constants, IGulpSettings } from "../../definitions";
 
 /**
  * Removes the RequireJS configuration script from a page.
- * 
+ *
  * @param contents   Contents of the page.
  * @returns Page contents with the RequireJS configuration script removed.
  */

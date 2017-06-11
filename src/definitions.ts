@@ -145,7 +145,7 @@ export interface IGulpSettings extends IProjectSchema {
 
 /**
  * Imported function to run as a Gulp task.
- * 
+ *
  * @param settings   Settings for a shenanigans project.
  * @param callback   Node-style callback, if a stream isn't returned.
  * @returns Either a stream or void (to indicate the callback will be used).

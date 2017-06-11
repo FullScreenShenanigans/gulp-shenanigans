@@ -2,7 +2,7 @@ import { Constants, IExternal, IGulpSettings } from "../../definitions";
 
 /**
  * Generates a <script> tag for a .js file.
- * 
+ *
  * @param src   Source of the file, excluding file extension.
  * @returns A <script> tag for the .js src.
  */

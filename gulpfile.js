@@ -2,11 +2,14 @@ var gulp = require("gulp");
 
 var createTsProject = (function () {
     var projects = {};
+    var gulpTypeScript;
 
     return function (fileName) {
-        var ts = require("gulp-typescript");
+        if (!gulpTypeScript) {
+            gulpTypeScript = require("gulp-typescript");
+        }
 
-        return projects[fileName] = ts.createProject(fileName);
+        return projects[fileName] = gulpTypeScript.createProject(fileName);
     };
 })();
 
@@ -17,37 +20,39 @@ gulp.task("clean", function () {
 });
 
 gulp.task("tslint", function () {
-    var gulpTslint = require("gulp-tslint");
     var tslint = require("tslint");
-
+    var gulpTslint = require("gulp-tslint");
     var program = tslint.Linter.createProgram("./tsconfig.json");
 
     return gulp
-        .src(
-            [
-                "src/**/*.ts",
-                "!src/**/*.d.ts",
-                "!**/*.template.*",
-                "!src/test/**/*.ts",
-                "!src/setup/**/*.ts"
-            ],
-            {
-                base: "."
-            })
-        .pipe(gulpTslint({ program }));
+        .src([
+            "src/**/*.ts",
+            "!src/**/*.d.ts",
+            "!**/*.template.*",
+            "!src/test/**/*.ts",
+            "!src/setup/**/*.ts"
+        ])
+        .pipe(gulpTslint({
+            formatter: "stylish",
+            program
+        }))
+        .pipe(gulpTslint.report())
 });
 
 gulp.task("tsc", function () {
     var merge = require("merge2");
+    var sourcemaps = require("gulp-sourcemaps");
 
-    var project = createTsProject("tsconfig.json");
-    var output = project
-        .src()
-        .pipe(project());
+    var tsProject = createTsProject("tsconfig.json");
+    var tsResult = tsProject.src()
+        .pipe(sourcemaps.init())
+        .pipe(tsProject());
 
     return merge([
-        output.dts.pipe(gulp.dest("lib")),
-        output.js.pipe(gulp.dest("lib"))
+        tsResult.js
+            .pipe(sourcemaps.write())
+            .pipe(gulp.dest("lib")),
+        tsResult.dts.pipe(gulp.dest("lib"))
     ]);
 });
 

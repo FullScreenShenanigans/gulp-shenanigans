@@ -13,7 +13,7 @@ class GulpShenanigans {
 
     /**
      * Initializes a new instance of the GulpShenanigans class.
-     * 
+     *
      * @param settings   Settings for a shenanigans project.
      */
     public constructor(settings: IGulpSettings) {
@@ -41,7 +41,7 @@ class GulpShenanigans {
 
     /**
      * Loads tasks from a directory.
-     * 
+     *
      * @param group   The name of the directory, as the task's parent group (if any).
      */
     private addTasksInGroup(group: string = ""): void {
@@ -61,7 +61,7 @@ class GulpShenanigans {
 
     /**
      * Generates a tasks's name from its components.
-     * 
+     *
      * @param group   The task's parent group (if any).
      * @param child   The task's child group (if any).
      */
@@ -74,7 +74,7 @@ class GulpShenanigans {
 
 /**
  * Creates gulp tasks for gulp-shenanigans.
- * 
+ *
  * @param gulp   Settings for a shenanigans project.
  */
 export function initialize(gulp: any): void {
