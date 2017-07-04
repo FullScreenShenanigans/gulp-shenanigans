@@ -4,6 +4,7 @@ lib/**
 *.css
 *.d.ts
 *.js*
+!*.json
 !gulpfile.js
 *.html
 node_modules/
