@@ -48,7 +48,9 @@ export class MochaLoader {
      */
     public constructor(mocha: Mocha) {
         this.mocha = mocha;
-        this.mocha.setup("bdd");
+        this.mocha.setup({
+            ui: "bdd"
+        });
     }
 
     /**
