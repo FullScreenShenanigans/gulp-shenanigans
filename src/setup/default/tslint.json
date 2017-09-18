@@ -41,6 +41,7 @@
         "prefer-function-over-method": [false],
         "prefer-method-signature": [false],
         "prefer-switch": [false],
+        "prefer-conditional-expression": [false],
         "prefer-template": [false],
         "restrict-plus-operands": [false],
         "space-before-function-paren": [false],
