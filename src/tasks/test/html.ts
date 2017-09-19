@@ -59,6 +59,7 @@ export default function taskTestSetupHtml(settings: IGulpSettings): any {
             return true;
         })
         .map((test: string): string => {
+            // tslint:disable:no-parameter-reassignment
             if (test.search(/^test/) === 0) {
                 test = test.substring("test/".length);
             }
@@ -68,6 +69,7 @@ export default function taskTestSetupHtml(settings: IGulpSettings): any {
             }
 
             return `"${test}"`;
+            // tslint:enable:no-parameter-reassignment
         })
         .join(",\n                ")
         .trim();
