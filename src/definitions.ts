@@ -1,5 +1,47 @@
 import * as gulp from "gulp";
 
+export interface IPackageSchema {
+    /**
+     * Package dependencies to run in production.
+     */
+    dependencies?: { [i: string]: string };
+
+    /**
+     * Lowercase name of the project.
+     */
+    name: string;
+
+    /**
+     * Shenanigans-specific settings for the project.
+     */
+    shenanigans: IShenanigansSchema;
+}
+
+/**
+ * Settings for a shenanigans project.
+ */
+export interface IShenanigansSchema {
+    /**
+     * Any external script dependencies.
+     */
+    externals?: IExternal[];
+
+    /**
+     * PascalCase name of the project.
+     */
+    name: string;
+
+    /**
+     * Whether to include the games task group.
+     */
+    games?: true;
+
+    /**
+     * Settings for the web task group, if included.
+     */
+    web?: IWebTaskGroup;
+}
+
 /**
  * Description of an external script dependency.
  */
@@ -16,84 +58,6 @@ export interface IExternal {
 }
 
 /**
- * Settings for a shenanigans project.
- */
-export interface IProjectSchema {
-    /**
-     * Names and versions of FullScreenShenanigans project dependencies, if any.
-     */
-    dependencies?: {
-        [i: string]: string;
-    };
-
-    /**
-     * Information on external scripts to include, if any.
-     */
-    externals?: IExternal[];
-
-    /**
-     * Node module dependencies and devDependencies, if any.
-     */
-    node_modules?: {
-        /**
-         * Names and versions of general Node module dependencies, if any.
-         */
-        dependencies?: {
-            [i: string]: string;
-        };
-
-        /**
-         * Names and versions of general Node module devDependencies, if any.
-         */
-        devDependencies?: {
-            [i: string]: string;
-        };
-    };
-
-    /**
-     * Metadata on the project.
-     */
-    package: {
-        /**
-         * Flavored description of the project.
-         */
-        description: string;
-
-        /**
-         * Case-sensitive repository name.
-         */
-        name: string;
-
-        /**
-         * Lowercase Node module name (by default, `name` lowercased).
-         */
-        nodeName: string;
-
-        /**
-         * Semver package version.
-         */
-        version: string;
-    };
-
-    /**
-     * Directories of optional tasks to include.
-     */
-    taskGroups?: {
-        /**
-         * Whether to include the games task group.
-         */
-        games?: true;
-
-        /**
-         * Settings for the web task group.
-         */
-        web?: IWebTaskGroup;
-
-        [i: string]: any | undefined;
-    };
-}
-
-/**
  * Settings for the web task group.
  */
 export interface IWebTaskGroup {
@@ -107,7 +71,7 @@ export interface IWebTaskGroup {
      */
     sections: {
         /**
-         * Credits to owners and commuity contributors to the original game.
+         * Credits to owners and community contributors to the original game.
          */
         credits: string[];
 
@@ -126,21 +90,16 @@ export interface IWebTaskGroup {
 /**
  * Project settings with runtime gulp settings added.
  */
-export interface IGulpSettings extends IProjectSchema {
-    /**
-     * Names of any dependencies.
-     */
-    dependencyNames: string[];
-
+export interface IGulpSettings {
     /**
      * Gulp runner for the shenanigans project.
      */
     gulp: gulp.Gulp;
 
     /**
-     * Package settings for gulp-shenanigans.
+     * Package settings for the shenanigans project.
      */
-    shenanigans: any;
+    packageSchema: IPackageSchema;
 }
 
 /**

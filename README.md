@@ -10,12 +10,6 @@ There are over two dozen repositories in the FullScreenShenanigans organization.
 This unifies common build logic and can be updated more easily than editing each individual repository.
 Updates can be brought in using `npm update`.
 
-### `shenanigans.json`
-
-gulp-shenanigans is configured by a project's `shenanigans.json`.
-The settings match the `IProjectSchema` interface in [src/definitions.ts](src/definitions.ts).
-
-
 ### Builds
 
 `gulp` by default completely re-builds the project.
@@ -24,7 +18,7 @@ You should have run this once after cloning the project.
 Use `gulp src` to rebuild source files under `/src` and `gulp test` to rebuild source files under `/test`.
 You can also use `gulp watch` to incrementally build both.
 
-Some projects have extra groups of tasks specified in their `shenanigans.json`.
+Some projects have extra groups of tasks specified under `"shenanigans"` in their `package.json`.
 * `web` groups are for projects that generate `.html` pages as output, such as games.
 * `games` groups are for projects that subclass GameStartr.
 

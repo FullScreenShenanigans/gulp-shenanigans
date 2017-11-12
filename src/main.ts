@@ -3,7 +3,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import { Constants, IGulpSettings, ITask } from "./definitions";
+import { Constants, IGulpSettings, IPackageSchema, IShenanigansSchema, ITask } from "./definitions";
 
 class GulpShenanigans {
     /**
@@ -30,12 +30,14 @@ class GulpShenanigans {
             this.addTasksInGroup(group);
         }
 
-        if (this.settings.taskGroups) {
-            for (const group in this.settings.taskGroups) {
-                if (this.settings.taskGroups[group]) {
-                    this.addTasksInGroup(group);
-                }
-            }
+        const shenanigans: IShenanigansSchema = this.settings.packageSchema.shenanigans;
+
+        if (shenanigans.games) {
+            this.addTasksInGroup("games");
+        }
+
+        if (shenanigans.web) {
+            this.addTasksInGroup("web");
         }
     }
 
@@ -80,24 +82,8 @@ class GulpShenanigans {
 export function initialize(gulp: any): void {
     "use strict";
 
-    const settings: IGulpSettings = JSON.parse(fs.readFileSync("./shenanigans.json").toString());
+    const packageSchema: IPackageSchema = JSON.parse(fs.readFileSync("./package.json").toString());
+    const gulpSettings: IGulpSettings = { gulp, packageSchema };
 
-    settings.gulp = gulp;
-    settings.shenanigans = JSON.parse(fs.readFileSync(`${__dirname}/../package.json`).toString());
-
-    if (!settings.node_modules) {
-        settings.node_modules = {};
-    }
-
-    if (!settings.package.nodeName) {
-        settings.package.nodeName = settings.package.name.toLowerCase();
-    }
-
-    if (!settings.taskGroups) {
-        settings.taskGroups = {};
-    }
-
-    settings.dependencyNames = Object.keys(settings.dependencies || {});
-
-    new GulpShenanigans(settings).initializeTasks();
+    new GulpShenanigans(gulpSettings).initializeTasks();
 }

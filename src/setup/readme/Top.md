@@ -1,6 +1,6 @@
-# {{package.name}}
-[![Build Status](https://travis-ci.org/FullScreenShenanigans/{{package.name}}.svg?branch=master)](https://travis-ci.org/FullScreenShenanigans/{{package.name}})
-[![NPM version](https://badge.fury.io/js/{{package.nodeName}}.svg)](http://badge.fury.io/js/{{package.nodeName}})
+# {{packageSchema.shenanigans.name}}
+[![Build Status](https://travis-ci.org/FullScreenShenanigans/{{packageSchema.shenanigans.name}}.svg?branch=master)](https://travis-ci.org/FullScreenShenanigans/{{packageSchema.shenanigans.name}})
+[![NPM version](https://badge.fury.io/js/{{packageSchema.name}}.svg)](http://badge.fury.io/js/{{packageSchema.name}})
 
-{{package.description}}
+{{packageSchema.description}}
 

@@ -12,7 +12,7 @@ export default function (settings: IGulpSettings, callback: Function): void {
         ["test:run"]
     ];
 
-    if (settings.taskGroups && settings.taskGroups.games) {
+    if (settings.packageSchema.shenanigans.games !== undefined) {
         tasks.push(["test:games"]);
     }
 

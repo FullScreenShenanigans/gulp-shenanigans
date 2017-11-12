@@ -22,19 +22,19 @@ export default function taskTestSetupHtml(settings: IGulpSettings): any {
     const mustache = require("gulp-mustache");
 
     const mustacheSettings: any = {
-        package: settings.package
+        package: settings.packageSchema
     };
 
-    if (settings.dependencies) {
-        mustacheSettings.dependencies = Object.keys(settings.dependencies)
+    if (settings.packageSchema.dependencies) {
+        mustacheSettings.dependencies = Object.keys(settings.packageSchema.dependencies)
             .map((dependency: string): string => `"${dependency}"`)
             .join(",\n                ");
     } else {
         mustacheSettings.dependencies = "";
     }
 
-    if (settings.externals) {
-        mustacheSettings.externals = settings.externals
+    if (settings.packageSchema.shenanigans.externals) {
+        mustacheSettings.externals = settings.packageSchema.shenanigans.externals
             .map((external: IExternal): string => {
                 return generateScript(`../${external.file}`);
             })
@@ -59,7 +59,6 @@ export default function taskTestSetupHtml(settings: IGulpSettings): any {
             return true;
         })
         .map((test: string): string => {
-            // tslint:disable:no-parameter-reassignment
             if (test.search(/^test/) === 0) {
                 test = test.substring("test/".length);
             }
@@ -69,7 +68,6 @@ export default function taskTestSetupHtml(settings: IGulpSettings): any {
             }
 
             return `"${test}"`;
-            // tslint:enable:no-parameter-reassignment
         })
         .join(",\n                ")
         .trim();

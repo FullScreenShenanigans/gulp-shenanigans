@@ -10,7 +10,6 @@ export default function (settings: IGulpSettings, callback: Function): void {
         ["setup:clean"],
         [
             "setup:copy",
-            "setup:package",
             "setup:readme"
         ]
     ];
