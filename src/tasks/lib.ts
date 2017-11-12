@@ -8,7 +8,7 @@ export default function (settings: IGulpSettings, callback: Function): void {
 
     const tasks: string[] = ["lib:tsc"];
 
-    if (settings.taskGroups && settings.taskGroups.web) {
+    if (settings.packageSchema.shenanigans.web) {
         tasks.push("lib:copy", "lib:cssMin", "lib:html");
     }
 

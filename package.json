@@ -8,7 +8,7 @@
     "url": "git+https://github.com/fullscreenshenanigans/gulp-shenanigans.git"
   },
   "keywords": [
-    "fullscreenshenanigans"
+    "fullscreenshenanigans", "gulp", "shenanigans"
   ],
   "author": {
     "name": "Josh Goldberg",

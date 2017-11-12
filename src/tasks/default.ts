@@ -1,4 +1,4 @@
-import { IGulpSettings } from "../definitions";
+import { IGulpSettings, IShenanigansSchema } from "../definitions";
 
 /**
  * One task to run them all.
@@ -10,10 +10,14 @@ export default function taskDefault(settings: IGulpSettings, callback: Function)
         ["src"], ["lib"], ["test"], ["docs"]
     ];
 
-    if (settings.taskGroups) {
-        tasks.push(
-            ...Object.keys(settings.taskGroups)
-                .map((key: string): [string] => [key]));
+    const shenanigans: IShenanigansSchema = settings.packageSchema.shenanigans;
+
+    if (shenanigans.games) {
+        tasks.push(["games"]);
+    }
+
+    if (shenanigans.web) {
+        tasks.push(["web"]);
     }
 
     require("run-sequence").use(settings.gulp)(...tasks, callback);

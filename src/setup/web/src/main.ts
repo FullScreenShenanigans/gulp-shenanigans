@@ -1,7 +1,7 @@
-import { {{package.name}} } from "./{{package.name}}";
+import { {{packageSchema.shenanigans.name}} } from "./{{packageSchema.shenanigans.name}}";
 
-const {{taskGroups.web.drivingObject}}: {{package.name}} = new {{package.name}}();
+const {{packageSchema.shenanigans.web.drivingObject}}: {{packageSchema.shenanigans.name}} = new {{packageSchema.shenanigans.name}}();
 
-document.getElementById("game")!.appendChild({{taskGroups.web.drivingObject}}.container);
+document.getElementById("game")!.appendChild({{packageSchema.shenanigans.web.drivingObject}}.container);
 
-(window as any).{{taskGroups.web.drivingObject}} = {{taskGroups.web.drivingObject}};
+(window as any).{{packageSchema.shenanigans.web.drivingObject}} = {{packageSchema.shenanigans.web.drivingObject}};

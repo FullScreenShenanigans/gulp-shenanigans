@@ -15,7 +15,7 @@ export default function (settings: IGulpSettings): any {
         .pipe(typedoc({
             ignoreCompilerErrors: true,
             module: "commonjs",
-            name: settings.package.name,
+            name: settings.packageSchema.shenanigans.name,
             out: output,
             target: "es5"
         }))

@@ -20,13 +20,13 @@ export default function (settings: IGulpSettings): any {
         .src(sources)
         .pipe(sourcemaps.init())
         .pipe(webpack({
-            entry: `./${Constants.folders.src}/${settings.package.name}.js`,
+            entry: `./${Constants.folders.src}/${settings.packageSchema.shenanigans.name}.js`,
             output: {
-                library: settings.package.name,
+                library: settings.packageSchema.shenanigans.name,
                 libraryTarget: "amd"
             }
         }))
-        .pipe(rename(`${settings.package.name}.js`))
+        .pipe(rename(`${settings.packageSchema.shenanigans.name}.js`))
         .pipe(uglify())
         .pipe(sourcemaps.write("."))
         .pipe(settings.gulp.dest(Constants.folders.dist));

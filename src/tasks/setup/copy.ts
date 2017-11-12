@@ -13,15 +13,13 @@ export default function (settings: IGulpSettings): any {
     ];
     const buildCommands = ["gulp"];
 
-    if (settings.taskGroups) {
-        if (settings.taskGroups.web) {
-            sources.push("./node_modules/gulp-shenanigans/src/setup/web/**/*");
-            buildCommands.unshift("gulp setup");
-        }
+    if (settings.packageSchema.shenanigans.web) {
+        sources.push("./node_modules/gulp-shenanigans/src/setup/web/**/*");
+        buildCommands.unshift("gulp setup");
+    }
 
-        if (settings.taskGroups.games) {
-            sources.push("./node_modules/gulp-shenanigans/src/setup/games/**/*");
-        }
+    if (settings.packageSchema.shenanigans.games) {
+        sources.push("./node_modules/gulp-shenanigans/src/setup/games/**/*");
     }
 
     return settings.gulp

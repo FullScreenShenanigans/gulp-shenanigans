@@ -10,7 +10,7 @@ function replaceBetween(readmeContents: string, section: string, settings: IGulp
 
     const start = readmeContents.indexOf(starter) + starter.length;
     const end = readmeContents.indexOf(ender);
-    const addingWeb: boolean = !!(settings.taskGroups && settings.taskGroups.web);
+    const addingWeb: boolean = !!settings.packageSchema.shenanigans.web;
 
     return [
         readmeContents.substring(0, start),

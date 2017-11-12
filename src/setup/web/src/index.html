@@ -2,8 +2,8 @@
 <html lang="en-us">
 <head>
     <meta charset="utf-8" />
-    <title>{{package.name}}</title>
-    <meta name="keywords" content="{{package.name}}, full, screen, typescript, javascript, html5, gaming, online, online game, fun, distraction" />
+    <title>{{packageSchema.shenanigans.name}}</title>
+    <meta name="keywords" content="{{packageSchema.shenanigans.name}}, full, screen, typescript, javascript, html5, gaming, online, online game, fun, distraction" />
     <meta name="description" content="{{package.description}}" />
 
     <link href="index.css" rel="stylesheet" />
@@ -13,25 +13,25 @@
 
 <body>
     <header>
-        <img src="theme/Header.gif" alt="{{taskGroups.web.url}}" />
+        <img src="theme/Header.gif" alt="{{packageSchema.shenanigans.web.url}}" />
     </header>
 
     <section id="game"></section>
 
     <section id="explanation" class="section-text">
-        {{#taskGroups.web.sections.explanation}}
+        {{#packageSchema.shenanigans.web.sections.explanation}}
         {{{.}}}
-        {{/taskGroups.web.sections.explanation}}
+        {{/packageSchema.shenanigans.web.sections.explanation}}
     </section>
 
     <section id="social" class="section-text">
-        You may <a class="link-github" href="http://www.github.com/FullScreenShenanigans/{{package.name}}">download the game for yourself</a> from GitHub, the location of {{package.name}}'s open source project.
+        You may <a class="link-github" href="http://www.github.com/FullScreenShenanigans/{{packageSchema.shenanigans.name}}">download the game for yourself</a> from GitHub, the location of {{packageSchema.shenanigans.name}}'s open source project.
     </section>
 
     <section id="credits" class="section-text">
-        {{#taskGroups.web.sections.credits}}
+        {{#packageSchema.shenanigans.web.sections.credits}}
         {{{.}}}
-        {{/taskGroups.web.sections.credits}}
+        {{/packageSchema.shenanigans.web.sections.credits}}
     </section>
 
     <section id="hangar96" class="section-text">
@@ -41,7 +41,7 @@
     </section>
 
     <section id="legal" class="section-text">
-        <small><em>{{taskGroups.web.sections.legal}}</em></small>
+        <small><em>{{packageSchema.shenanigans.web.sections.legal}}</em></small>
     </section>
 
     <script data-main="main.js" src="../node_modules/requirejs/require.js" type="text/javascript"></script>
@@ -52,7 +52,7 @@
             baseUrl: "../node_modules",
             paths: {
                 components: "../lib/components/",
-                {{package.name}}: "../lib/{{package.name}}",
+                {{packageSchema.shenanigans.name}}: "../lib/{{packageSchema.shenanigans.name}}",
                 main: "../lib/main",
                 settings: "../lib/settings/"
             }
@@ -62,9 +62,9 @@
     <!-- build:remove -->
     <script>
         var dependencies = [
-            {{#dependencyNames}}
+            {{#dependencies}}
             "{{.}}",
-            {{/dependencyNames}}
+            {{/dependencies}}
         ];
 
         var config = {
