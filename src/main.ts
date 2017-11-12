@@ -83,7 +83,10 @@ export function initialize(gulp: any): void {
     "use strict";
 
     const packageSchema: IPackageSchema = JSON.parse(fs.readFileSync("./package.json").toString());
-    const gulpSettings: IGulpSettings = { gulp, packageSchema };
+    const dependencies = packageSchema.dependencies === undefined
+        ? []
+        : Object.keys(packageSchema.dependencies);
+    const gulpSettings: IGulpSettings = { dependencies, gulp, packageSchema };
 
     new GulpShenanigans(gulpSettings).initializeTasks();
 }

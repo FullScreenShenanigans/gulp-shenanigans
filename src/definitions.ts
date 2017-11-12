@@ -92,6 +92,11 @@ export interface IWebTaskGroup {
  */
 export interface IGulpSettings {
     /**
+     * Any package dependencies.
+     */
+    dependencies: string[];
+
+    /**
      * Gulp runner for the shenanigans project.
      */
     gulp: gulp.Gulp;

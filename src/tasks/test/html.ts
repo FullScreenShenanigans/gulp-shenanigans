@@ -40,7 +40,7 @@ export default function taskTestSetupHtml(settings: IGulpSettings): any {
             })
             .join("\n        ");
     } else {
-        mustacheSettings.externalScripts = "<!-- (none) -->";
+        mustacheSettings.externals = "<!-- (none) -->";
     }
 
     mustacheSettings.tests = glob
