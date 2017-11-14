@@ -1,18 +1,6 @@
 import { Constants, IExternal, IGulpSettings } from "../../definitions";
 
 /**
- * Generates a <script> tag for a .js file.
- *
- * @param src   Source of the file, excluding file extension.
- * @returns A <script> tag for the .js src.
- */
-function generateScript(src: string): string {
-    "use strict";
-
-    return `<script src="${src}.js"></script>`;
-}
-
-/**
  * Sets up for tests.
  */
 export default function taskTestSetupHtml(settings: IGulpSettings): any {
@@ -22,7 +10,7 @@ export default function taskTestSetupHtml(settings: IGulpSettings): any {
     const mustache = require("gulp-mustache");
 
     const mustacheSettings: any = {
-        package: settings.packageSchema
+        package: settings.packageSchema,
     };
 
     if (settings.packageSchema.dependencies) {
@@ -36,11 +24,11 @@ export default function taskTestSetupHtml(settings: IGulpSettings): any {
     if (settings.packageSchema.shenanigans.externals) {
         mustacheSettings.externals = settings.packageSchema.shenanigans.externals
             .map((external: IExternal): string => {
-                return generateScript(`../${external.file}`);
+                return `"${external.name}": "${external.js.dev}",`;
             })
             .join("\n        ");
     } else {
-        mustacheSettings.externals = "<!-- (none) -->";
+        mustacheSettings.externals = "";
     }
 
     mustacheSettings.tests = glob

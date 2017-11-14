@@ -43,18 +43,33 @@ export interface IShenanigansSchema {
 }
 
 /**
- * Description of an external script dependency.
+ * Description of an external dependency.
  */
 export interface IExternal {
     /**
-     * The dependency's .js script file location.
+     * Scripts the dependency needs to bring in.
      */
-    file: string;
+    js: IExternalScripts;
 
     /**
-     * The dependency's .d.ts definition file location.
+     * Package name of the dependency.
      */
-    typing: string;
+    name: string;
+}
+
+/**
+ * Scripts a dependency needs to brig in.
+ */
+export interface IExternalScripts {
+    /**
+     * Development version of the script.
+     */
+    dev: string;
+
+    /**
+     * Production version of the script.
+     */
+    prod: string;
 }
 
 /**
