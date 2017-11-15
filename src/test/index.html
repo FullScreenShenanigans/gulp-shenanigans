@@ -18,10 +18,6 @@
         </script>
         <!-- Dependencies: End -->
 
-        <!-- Externals: Begin -->
-        {{{externals}}}
-        <!-- Externals: End -->
-
         <!-- Tests: Begin -->
         <script type="text/javascript">
             window.testPaths = [
@@ -38,7 +34,11 @@
         <script type="text/javascript">
             require.config({
                 paths: {
-                    sinon: "../node_modules/sinon/pkg/sinon"
+                    "lolex": "../node_modules/lolex/lolex",
+                    "sinon": "../node_modules/sinon/pkg/sinon",
+                    {{#externals}}
+                    {{{.}}}
+                    {{/externals}}
                 }
             });
         </script>
