@@ -61,6 +61,12 @@ Creates test runners and runs them in the `/test` folder.
 * **`test:tsc`** - Compiles test .ts files in-place.
 * **`test:run`** - Runs tests.
 
+### `dist`
+
+Creates highly minified output file(s) in the `/dist` folder.
+
+* **`dist:webpack`** - Creates optimized output file(s) for distribution.
+
 ### `docs`
 
 Generates HTML documentation under `/docs/generated` based on source file comments.

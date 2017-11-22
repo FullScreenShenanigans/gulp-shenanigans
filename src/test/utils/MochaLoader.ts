@@ -24,11 +24,6 @@ interface ITestHierarchy {
  */
 export class MochaLoader {
     /**
-     * The underlying mocha instance.
-     */
-    private readonly mocha: Mocha;
-
-    /**
      * Root grouping of test hierarchies.
      */
     private readonly testHierarchy: ITestHierarchy = {
@@ -43,12 +38,9 @@ export class MochaLoader {
 
     /**
      * Initializes a new instance of the MochaLoader class.
-     *
-     * @param mocha   The underlying mocha instance.
      */
-    public constructor(mocha: Mocha) {
-        this.mocha = mocha;
-        this.mocha.setup({
+    public constructor() {
+        mocha.setup({
             ui: "bdd"
         });
     }
@@ -111,7 +103,7 @@ export class MochaLoader {
      * Runs tests using mocha.
      */
     public run(): void {
-        this.mocha.run();
+        mocha.run();
     }
 
     /**

@@ -25,7 +25,7 @@
     "@types/chai": "^4.0.4",
     "@types/lolex": "^1.5.32",
     "@types/mocha": "^2.2.44",
-    "@types/sinon": "^2.3.7",
+    "@types/sinon": "^4.0.0",
     "@types/sinon-chai": "^2.7.29",
     "chai": "^4.1.2",
     "del": "^3.0.0",
@@ -66,8 +66,7 @@
   },
   "devDependencies": {
     "@types/gulp": "^4.0.5",
-    "@types/mustache": "^0.8.30",
-    "@types/node": "^8.0.51"
+    "@types/mustache": "^0.8.30"
   },
   "scripts": {
     "gulp": "gulp",
