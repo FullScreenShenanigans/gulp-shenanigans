@@ -1,5 +1,8 @@
 import * as gulp from "gulp";
 
+/**
+ * Schema for package.json contents.
+ */
 export interface IPackageSchema {
     /**
      * Package dependencies to run in production.
@@ -22,6 +25,11 @@ export interface IPackageSchema {
  */
 export interface IShenanigansSchema {
     /**
+     * Additional webpack entry points.
+     */
+    entries?: IEntry[];
+
+    /**
      * Any external script dependencies.
      */
     externals?: IExternal[];
@@ -40,6 +48,12 @@ export interface IShenanigansSchema {
      * Settings for the web task group, if included.
      */
     web?: IWebTaskGroup;
+}
+
+export interface IEntry {
+    entry: string;
+    name: string;
+    sources: string[];
 }
 
 /**
@@ -142,7 +156,7 @@ export const Constants = {
     /**
      * Default task groups to run.
      */
-    defaultTaskGroups: ["docs", "lib", "setup", "src", "test"],
+    defaultTaskGroups: ["dist", "docs", "lib", "setup", "src", "test"],
 
     /**
      * Locations of package files.
@@ -179,7 +193,7 @@ export const Constants = {
      */
     folders: {
         /**
-         * Output destination for compiled distribution webpages.
+         * Output destination for optimized distribution files.
          */
         dist: "dist",
 

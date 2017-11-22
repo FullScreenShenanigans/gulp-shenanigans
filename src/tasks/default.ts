@@ -7,7 +7,7 @@ export default function taskDefault(settings: IGulpSettings, callback: Function)
     "use strict";
 
     const tasks: string[][] = [
-        ["src"], ["lib"], ["test"], ["docs"]
+        ["src"], ["lib"], ["test"], ["dist"], ["docs"]
     ];
 
     const shenanigans: IShenanigansSchema = settings.packageSchema.shenanigans;

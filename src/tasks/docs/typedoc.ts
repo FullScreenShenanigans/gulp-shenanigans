@@ -13,11 +13,13 @@ export default function (settings: IGulpSettings): any {
     return settings.gulp
         .src([`${Constants.folders.src}/**/*.ts`])
         .pipe(typedoc({
+            experimentalDecorators: true,
             ignoreCompilerErrors: true,
+            jsx: "react",
             module: "commonjs",
             name: settings.packageSchema.shenanigans.name,
             out: output,
-            target: "es5"
+            target: "es2015"
         }))
         .pipe(settings.gulp.dest(output));
 }
