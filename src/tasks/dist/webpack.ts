@@ -15,6 +15,20 @@ const getEntriesAndSources = (shenanigans: IShenanigansSchema): IEntry[] => {
         : shenanigans.entries;
 };
 
+const getExternals = (shenanigans: IShenanigansSchema): { [i: string]: string } => {
+    const output: { [i: string]: string } = {};
+
+    if (shenanigans.externals === undefined) {
+        return output;
+    }
+
+    for (const external of shenanigans.externals) {
+        output[external.name] = external.name;
+    }
+
+    return output;
+};
+
 /**
  * Compiles source files with Webpack into the dist folder.
  */
@@ -28,12 +42,14 @@ export default function (settings: IGulpSettings): any {
     const webpack = require("webpack-stream");
 
     const entriesAndSources: IEntry[] = getEntriesAndSources(settings.packageSchema.shenanigans);
+    const externals = getExternals(settings.packageSchema.shenanigans);
     const streams = entriesAndSources.map(({ entry, name, sources }: IEntry): any =>
         settings.gulp
             .src(sources)
             .pipe(sourcemaps.init())
             .pipe(webpack({
                 entry,
+                externals,
                 output: {
                     library: name,
                     libraryTarget: "amd"
