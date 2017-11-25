@@ -32,7 +32,7 @@ export default function taskTestSetupHtml(settings: IGulpSettings): any {
     }
 
     mustacheSettings.tests = glob
-        .sync(`${Constants.folders.test}/**/*.ts`)
+        .sync(`${Constants.folders.test}/**/*.ts*`)
         .filter((file: string): boolean => {
             // Ignore auto-added utilities
             if (file.indexOf("utils/") === 0) {
@@ -53,6 +53,10 @@ export default function taskTestSetupHtml(settings: IGulpSettings): any {
 
             if (test.search(/.ts$/) === test.length - ".ts".length) {
                 test = test.substring(0, test.length - ".ts".length);
+            }
+
+            if (test.search(/.tsx$/) === test.length - ".tsx".length) {
+                test = test.substring(0, test.length - ".tsx".length);
             }
 
             return `"${test}"`;
