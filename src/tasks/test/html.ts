@@ -26,7 +26,7 @@ export default function taskTestSetupHtml(settings: IGulpSettings): any {
             .map((external: IExternal): string => {
                 return `"${external.name}": "${external.js.dev}",`;
             })
-            .join("\n        ");
+            .join("\n                ");
     } else {
         mustacheSettings.externals = "";
     }

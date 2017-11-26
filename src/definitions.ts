@@ -81,9 +81,9 @@ export interface IExternalScripts {
     dev: string;
 
     /**
-     * Production version of the script.
+     * Production version of the script, if used in production.
      */
-    prod: string;
+    prod?: string;
 }
 
 /**
