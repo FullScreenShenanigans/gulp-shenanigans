@@ -51,11 +51,13 @@ function redirectTestDependencies(dependencies: string[]): void {
 
         requirejs.config({
             map: {
-                [`${dependency}/lib`]: dependency
+                [`${dependency}/lib`]: {
+                    lib: "src"
+                }
             },
             paths: {
-                [dependency]: `../node_modules/${dependency}/lib`,
-                [`${dependency}/lib`]: `../node_modules/${dependency}/src`
+                [dependency]: `../node_modules/${dependency}/src`,
+                [`${dependency}/lib`]: `../node_modules/${dependency}/lib`
             }
         });
     }
