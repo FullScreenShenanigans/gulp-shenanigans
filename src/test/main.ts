@@ -46,13 +46,16 @@ function redirectTestDependencies(dependencies: string[]): void {
             main: "index"
         }))
     });
-    for (const dependency of dependencies) {
+    for (const dependencyUpper of dependencies) {
+        const dependency = dependencyUpper.toLowerCase();
+
         requirejs.config({
-            paths: {
-                [dependency.toLowerCase() + "/lib"]: `../node_modules/${dependency.toLowerCase()}/src`
-            },
             map: {
-                [dependency.toLowerCase() + "/lib"]: dependency.toLowerCase()
+                [`${dependency}/lib`]: dependency
+            },
+            paths: {
+                [dependency]: `../node_modules/${dependency}/lib`,
+                [`${dependency}/lib`]: `../node_modules/${dependency}/src`
             }
         });
     }
