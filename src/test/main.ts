@@ -40,10 +40,19 @@ export const under: typeof mochaLoader.under = mochaLoader.under.bind(mochaLoade
  * @param testDependencies   Modules depended upon for tests.
  */
 function redirectTestDependencies(dependencies: string[]): void {
+    requirejs.config({
+        packages: dependencies.map((dependency: string) => ({
+            name: dependency,
+            main: "index"
+        }))
+    });
     for (const dependency of dependencies) {
         requirejs.config({
             paths: {
                 [dependency.toLowerCase() + "/lib"]: `../node_modules/${dependency.toLowerCase()}/src`
+            },
+            map: {
+                [dependency.toLowerCase() + "/lib"]: dependency.toLowerCase()
             }
         });
     }
