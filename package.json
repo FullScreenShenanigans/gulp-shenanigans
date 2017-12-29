@@ -23,7 +23,7 @@
   "homepage": "https://github.com/fullscreenshenanigans/gulp-shenanigans#readme",
   "dependencies": {
     "@types/chai": "^4.0.4",
-    "@types/lolex": "^1.5.32",
+    "@types/lolex": "^2.1.1",
     "@types/mocha": "^2.2.44",
     "@types/sinon": "^4.0.0",
     "@types/sinon-chai": "^2.7.29",
@@ -35,7 +35,7 @@
     "gulp-clean-css": "^3.9.0",
     "gulp-concat": "^2.6.1",
     "gulp-file": "^0.3.0",
-    "gulp-htmlmin": "^3.0.0",
+    "gulp-htmlmin": "^4.0.0",
     "gulp-insert": "^0.5.0",
     "gulp-jsbeautifier": "^2.1.1",
     "gulp-mocha": "^4.3.1",
